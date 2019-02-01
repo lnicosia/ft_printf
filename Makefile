@@ -6,7 +6,7 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2019/02/01 18:20:18 by lnicosia         ###   ########.fr        #
+#    Updated: 2019/02/01 19:14:16 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ INCLUDES_DIR = includes
 BIN_DIR = .
 
 SRC_RAW = ft_putchar.c ft_putstr.c main.c ft_printf.c ft_putnbr.c ft_putunbr.c \
+		  ft_putaddr.c ft_putnbr_base.c
 
 HEADERS = ft_printf.h
 

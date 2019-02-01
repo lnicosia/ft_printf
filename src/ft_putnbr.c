@@ -6,14 +6,15 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 18:12:13 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/01 20:31:55 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(long nb)
+void	ft_putnbr(t_data data)
 {
+	long nb = data.nb;
 	if (nb == -2147483648)
 	{
 		ft_putstr("-2");

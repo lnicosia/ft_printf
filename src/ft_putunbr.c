@@ -6,14 +6,17 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 18:21:32 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/01 20:34:18 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putunbr(unsigned long nb)
+void	ft_putunbr(t_data data)
 {
+	unsigned long nb;
+
+	nb = data.unb;
 	if (nb == 2147483648)
 	{
 		ft_putstr("-2");

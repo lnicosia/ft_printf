@@ -6,13 +6,13 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 10:59:59 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 15:10:52 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/01 20:31:35 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+void	ft_putchar(t_data data)
 {
-	write(1, &c, 1);
+	write(1, data.s, 1);
 }

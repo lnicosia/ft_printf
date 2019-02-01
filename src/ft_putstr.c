@@ -6,16 +6,18 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 15:11:03 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/01 20:33:26 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char const *s)
+void	ft_putstr(t_data data)
 {
-	int	i;
+	int			i;
+	const char *s;
 
+	s = data.s;
 	i = 0;
 	while (s[i])
 		i++;
