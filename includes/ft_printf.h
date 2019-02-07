@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 20:35:16 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/07 16:51:44 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,26 @@
 
 typedef struct	s_data
 {
-	long			nb;
-	unsigned long	unb;
-	char			*s;
+	va_list			ap;
+	long			l;
+	unsigned long	ul;
+	const char		*s;
+	const char		*format;
+	char			c;
+	void			*p;
 }				t_data;
 
 int		ft_printf(const char *restrict format, ...);
-void	ft_putchar(t_data data);
-void	ft_putnbr(t_data data);
-void	ft_putunbr(t_data data);
-void	ft_putstr(t_data data);
-void	ft_putaddr(t_data data);
-void	ft_putnbr_base(t_data data);
+void	ft_putchar(t_data *data);
+void	ft_putnbr(t_data *data);
+void	ft_putunbr(t_data *data);
+void	ft_putstr(t_data *data);
+void	ft_putaddr(t_data *data);
+void	ft_putnbr_x(t_data *data);
+void	ft_putnbr_X(t_data *data);
+void	ft_putnbr_o(t_data *data);
+void	ft_putlong_base(long nbr, char *base);
+void	ft_invalid(t_data *data);
+void	ft_putpercent(t_data *data);
 
 #endif

@@ -5,14 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 10:59:59 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 20:31:35 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/02/05 14:42:42 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/02/07 17:39:27 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(t_data data)
+void	ft_putchar(t_data *data)
 {
-	write(1, data.s, 1);
+	char	c;
+
+	c = va_arg(data->ap, int);
+	write(1, &c, 1);
 }

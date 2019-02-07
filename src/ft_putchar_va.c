@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/07 16:32:00 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/07 10:59:59 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/02/05 15:29:44 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(t_data *data)
+void	ft_putchar_va(t_data data)
 {
-	int			i;
-	const char *s;
-
-	s = va_arg(data->ap, char *);
-	i = 0;
-	while (s[i])
-		i++;
-	write(1, s, i);
+	write(1, &data.c, 1);
 }

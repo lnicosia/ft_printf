@@ -6,17 +6,17 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 19:05:57 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 20:03:54 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/07 16:46:46 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putaddr(void * p)
+void	ft_putaddr(t_data *data)
 {
 	long a;
 
-	a = (long)p;
-	ft_putstr("0x");
-	ft_putnbr_base(a, "0123456789abcdef");
+	a = (long)va_arg(data->ap, void *);
+	write(1, "0x", 2);
+	ft_putlong_base(a, "0123456789abcdef");
 }

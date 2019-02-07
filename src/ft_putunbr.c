@@ -6,29 +6,34 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 20:34:18 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/07 16:43:40 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putunbr(t_data data)
+void	ft_putulong(long nb)
 {
-	unsigned long nb;
+	char	c;
 
-	nb = data.unb;
-	if (nb == 2147483648)
+	if (nb < 0)
 	{
-		ft_putstr("-2");
-		nb = 147483648;
+		nb = -nb;
+		write(1 , "-", 1);
 	}
 	if (nb < 10)
 	{
-		ft_putchar('0' + nb);
+		c = '0' + nb;
+		write(1, &c, 1);
 	}
 	else
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putulong(nb / 10);
+		ft_putulong(nb % 10);
 	}
+}
+
+void	ft_putunbr(t_data *data)
+{
+	ft_putulong(va_arg(data->ap, long));
 }

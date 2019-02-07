@@ -6,77 +6,56 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/01 20:36:27 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/07 17:31:13 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	(*put[128])(t_data data);
+static void	(*put[128])(t_data *data);
 
 void		init_put(void)
 {
-	put['i'] = (&ft_putnbr);
-	put['d'] = (&ft_putnbr);
-	put['u'] = (&ft_putunbr);
+	int	i;
+
+	i = -1;
+	while (++i < 127)
+		put[i] = &ft_invalid;
+	put['i'] = &ft_putnbr;
+	put['d'] = &ft_putnbr;
+	put['u'] = &ft_putunbr;
+	put['x'] = &ft_putnbr_x;
+	put['X'] = &ft_putnbr_X;
+	put['o'] = &ft_putnbr_o;
+	put['s'] = &ft_putstr;
+	put['c'] = &ft_putchar;
+	put['p'] = &ft_putaddr;
+	put['%'] = &ft_putpercent;
 }
 
 int			ft_printf(const char *restrict format, ...)
 {
 	int		i;
 	int		argc;
-	va_list	ap;
 	t_data	data;
 
 	i = 0;
 	argc = 0;
-	va_start(ap, format);
+	va_start(data.ap, format);
 	init_put();
 	while (format[i])
 	{
-		if (format[i] != '%')
-			ft_putchar(format[i]);
-		else
+		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 'i' || format[i] == 'd')
-			{
-				data.nb = va_arg(ap, long);
-			}
-			else if (format[i] == '%')
-				ft_putchar('%');
-			else if (format[i] == 'u')
-			{
-				ft_putunbr(va_arg(ap, unsigned long));
-			}
-			else if (format[i] == 'x')
-			{
-				ft_putnbr_base(va_arg(ap, long), "0123456789abcdef");
-			}
-			else if (format[i] == 'X')
-			{
-				ft_putnbr_base(va_arg(ap, long), "0123456789ABCDEF");
-			}
-			else if (format[i] == 'o')
-			{
-				ft_putnbr_base(va_arg(ap, long), "01234567");
-			}
-			else if (format[i] == 's')
-			{
-				ft_putstr(va_arg(ap, char *));
-			}
-			else if (format[i] == 'c')
-			{
-				ft_putchar(va_arg(ap, int));
-			}
-			if (format[i] == 'p')
-			{
-				ft_putaddr(va_arg(ap, void *));
-			}
-			argc++;
+			data.format = format + i;
+			put[(int)format[i]](&data);
 		}
+		else
+			write(1, &format[i], 1);
+			argc++;
 		i++;
 	}
-	va_end(ap);
+	va_end(data.ap);
 	return (0);
 }
