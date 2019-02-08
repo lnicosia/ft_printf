@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/07 17:32:57 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/08 12:08:07 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,17 @@ int		main(void)
 	printf("printf: hexa maj:	%X\n\n", 55555);
 	ft_printf("ft_printf: octal:	%o\n", 55555);
 	printf("printf: otcal:		%o\n\n", 55555);
-	ft_printf("ft_printf: adrr &int:	%p\n", &a);
-	printf("printf: adrr &int:	%p\n\n", &a);
-	ft_printf("Coucou\n%c", 4);
+	ft_printf("ft_printf: adrr :	%p\n", &a);
+	printf("printf: adrr :		%p\n\n", &a);
+	ft_printf("Long test:\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbb\n\n");
 	//ft_printf("%cb%%\nnb1 = %d\nnb2 = %d\n", 'a', 5, 457);
+	ft_printf("Test:\n");
+	printf("4567 |%-10]5d| plip\n", 12);
+	printf("4567 |%10]5d| plip\n", 12);
+	printf("|%10.5d|\n", -12);
+	printf("|%10d|\n", -12);
+	printf("|%010d|\n", -12); 
+	printf("|%-10.5d|\n", -12);
+	printf("|%-010.5d|\n", -12);
 	return (0);
 }

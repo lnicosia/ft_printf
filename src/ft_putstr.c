@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/07 16:32:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/08 12:11:25 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	ft_putstr(t_data *data)
 {
 	int			i;
-	const char *s;
+	const char	*s;
 
 	s = va_arg(data->ap, char *);
 	i = 0;
 	while (s[i])
 		i++;
-	write(1, s, i);
+	fill_buffer(data, s, i);
 }
