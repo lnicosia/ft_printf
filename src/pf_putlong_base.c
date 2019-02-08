@@ -6,13 +6,13 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:18:56 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/08 12:19:51 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:52:52 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_check_base(char *base)
+static int	pf_check_base(char *base)
 {
 	int i;
 	int j;
@@ -35,23 +35,23 @@ int		ft_check_base(char *base)
 	return (i);
 }
 
-void	ft_print(long nbr, int len, char *base, t_data *data)
+static void	pf_print(long nbr, int len, char *base, t_data *data)
 {
 	if (nbr < len)
 		fill_buffer(data, &base[nbr], 1);
 	else
 	{
-		ft_print((nbr) / len, len, base, data);
-		ft_print((nbr) % len, len, base, data);
+		pf_print((nbr) / len, len, base, data);
+		pf_print((nbr) % len, len, base, data);
 	}
 }
 
-void	ft_putlong_base(long nbr, char *base, t_data *data)
+void		pf_putlong_base(long nbr, char *base, t_data *data)
 {
 	int	len;
 	int	min_stock;
 
-	len = ft_check_base(base);
+	len = pf_check_base(base);
 	min_stock = -1;
 	if (len > 1)
 	{
@@ -65,7 +65,7 @@ void	ft_putlong_base(long nbr, char *base, t_data *data)
 			fill_buffer(data, "-", 1);
 			nbr = -nbr;
 		}
-		ft_print(nbr, len, base, data);
+		pf_print(nbr, len, base, data);
 		if (min_stock != -1)
 			fill_buffer(data, &base[min_stock % len], 1);
 	}

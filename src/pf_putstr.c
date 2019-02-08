@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/12 22:33:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/08 12:20:56 by lnicosia         ###   ########.fr       */
+/*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/02/08 16:50:55 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_x(t_data *data)
+void	pf_putstr(t_data *data)
 {
-	ft_putlong_base(va_arg(data->ap, long), "0123456789abcdef", data);
-}
+	int			i;
+	const char	*s;
 
-void	ft_putnbr_xcaps(t_data *data)
-{
-	ft_putlong_base(va_arg(data->ap, long), "0123456789ABCDEF", data);
-}
-
-void	ft_putnbr_o(t_data *data)
-{
-	ft_putlong_base(va_arg(data->ap, long), "01234567", data);
+	s = va_arg(data->ap, char *);
+	i = 0;
+	while (s[i])
+		i++;
+	fill_buffer(data, s, i);
 }

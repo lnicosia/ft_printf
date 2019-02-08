@@ -6,7 +6,7 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2019/02/08 12:19:30 by lnicosia         ###   ########.fr        #
+#    Updated: 2019/02/08 17:48:18 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ OBJ_DIR = obj
 INCLUDES_DIR = includes
 BIN_DIR = .
 
-SRC_RAW = ft_putchar.c ft_putstr.c main.c ft_printf.c ft_putnbr.c ft_putunbr.c \
-		  ft_putaddr.c ft_putnbr_base.c ft_invalid.c ft_putpercent.c \
-		  ft_putlong_base.c
+SRC_RAW = pf_putchar.c pf_putstr.c main.c ft_printf.c pf_putnbr.c pf_putunbr.c \
+		  pf_putaddr.c pf_putnbr_base.c pf_invalid.c pf_putpercent.c \
+		  pf_putlong_base.c parse_options.c pf_atoi.c
 
 HEADERS = ft_printf.h
 
@@ -29,7 +29,7 @@ SRC = $(addprefix $(SRC_DIR)/, $(SRC_RAW))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_RAW:.c=.o))
 INCLUDES = $(addprefix $(INCLUDES_DIR)/, $(HEADERS))
 
-CFLAGS = -g3 -O3 -Wall -I $(INCLUDES_DIR) \
+CFLAGS = -g3 -O3 -Wall -I $(INCLUDES_DIR) -fsanitize=address \
 
 RED := "\033[0;31m"
 GREEN := "\033[0;32m"

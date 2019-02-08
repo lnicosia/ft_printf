@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putpercent.c                                    :+:      :+:    :+:   */
+/*   ft_putadrr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/07 15:22:53 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/08 11:52:49 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/02/01 19:05:57 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/02/08 16:53:15 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putpercent(t_data *data)
+void	pf_putaddr(t_data *data)
 {
-	fill_buffer(data, "%", 1);
+	long a;
+
+	a = (long)va_arg(data->ap, void *);
+	fill_buffer(data, "0x", 2);
+	pf_putlong_base(a, "0123456789abcdef", data);
 }

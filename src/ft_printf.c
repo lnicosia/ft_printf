@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/08 12:21:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/08 18:21:04 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ void		init_put(void)
 
 	i = -1;
 	while (++i < 127)
-		g_printers[i] = &ft_invalid;
-	g_printers['d'] = &ft_putnbr;
-	g_printers['i'] = &ft_putnbr;
-	g_printers['o'] = &ft_putnbr_o;
-	g_printers['u'] = &ft_putunbr;
-	g_printers['x'] = &ft_putnbr_x;
-	g_printers['X'] = &ft_putnbr_xcaps;
-	g_printers['c'] = &ft_putchar;
-	g_printers['s'] = &ft_putstr;
-	g_printers['p'] = &ft_putaddr;
-	g_printers['%'] = &ft_putpercent;
+		g_printers[i] = &pf_invalid;
+	g_printers['d'] = &pf_putnbr;
+	g_printers['i'] = &pf_putnbr;
+	g_printers['o'] = &pf_putnbr_o;
+	g_printers['u'] = &pf_putunbr;
+	g_printers['x'] = &pf_putnbr_x;
+	g_printers['X'] = &pf_putnbr_xcaps;
+	g_printers['c'] = &pf_putchar;
+	g_printers['s'] = &pf_putstr;
+	g_printers['p'] = &pf_putaddr;
+	g_printers['%'] = &pf_putpercent;
 }
 
 void		fill_buffer(t_data *data, const char *s, int size)
@@ -54,13 +54,21 @@ void		fill_buffer(t_data *data, const char *s, int size)
 	}
 }
 
-void		init_buffer(t_data data)
+void		init_data(t_data *data)
 {
 	int	i;
 
 	i = -1;
 	while (++i < BUFF_SIZE)
-		data.buffer[i] = '\0';
+		data->buffer[i] = '\0';
+	data->left = 0;
+	data->plus = 0;
+	data->zero = 0;
+	data->space = 0;
+	data->sharp = 0;
+	data->l_min = 1;
+	data->prec = 0;
+	data->size = 4;
 }
 
 int			ft_printf(const char *restrict format, ...)
@@ -71,7 +79,7 @@ int			ft_printf(const char *restrict format, ...)
 
 	i = 0;
 	data.i = 0;
-	init_buffer(data);
+	init_data(&data);
 	va_start(data.ap, format);
 	init_put();
 	while (format[i])
@@ -79,8 +87,7 @@ int			ft_printf(const char *restrict format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			data.format = format + i;
-			c = format[i];
+			c = parse_options(format, &i, &data);
 			g_printers[c](&data);
 		}
 		else

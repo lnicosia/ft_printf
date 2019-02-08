@@ -2,4 +2,5 @@ obj
 obj/*
 *.swp
 *.o
+./ft_printf
 ft_printf

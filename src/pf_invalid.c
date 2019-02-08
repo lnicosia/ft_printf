@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_invalid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/05 14:42:42 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/08 11:53:05 by lnicosia         ###   ########.fr       */
+/*   Created: 2019/02/07 12:45:10 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/02/08 16:48:12 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(t_data *data)
+void	pf_invalid(t_data *data)
 {
-	char	c;
-
-	c = va_arg(data->ap, int);
-	fill_buffer(data, &c, 1);
+	(void)data;
+	fill_buffer(data, "Invalid option\n", 15);
 }
