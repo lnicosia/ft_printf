@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 19:29:28 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/11 19:54:15 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,18 @@ int		main(void)
 	ft_printf("|%-+ 10.5d|\n", 5); printf("|%-+ 10.5d|\n\n", 5);
 	ft_printf("|%+- 10.5d|\n", -5); printf("|%+- 10.5d|\n\n", -5);*/
 
-/*	ft_printf("Check global %%d:\n");
+	ft_printf("Check global %%d:\n");
 
-	ft_printf("|%   ++++    ---  15.5hhd|\n", 127);
-	printf("|%   ++++    ---  15.5hhd|\n", 127);
-	ft_printf("|%   ++++    ---  15.5hhd|\n", 128);
-	printf("|%   ++++    ---  15.5hhd|\n", 128);
-	ft_printf("|% 00  ++++  00  ---  15.5hhd|\n", 127);
-	printf("|% 00  ++++ 00   ---  15.5hhd|\n", 127);*/
+	ft_printf("|%       ---  15.5hhu|\n", 127);
+	printf("|%       ---  15.5hhu|\n", 127);
+	ft_printf("|%       ---  15.5hhu|\n", 128);
+	printf("|%       ---  15.5hhu|\n", 128);
+	ft_printf("|% 00    00    15.5hhu|\n", 127);
+	printf("|% 00   00     15.5hhu|\n", 127);
+	ft_printf("|% 00    00    15.0hhu|\n", 127);
+	printf("|% 00   00     15.0hhu|\n", 127);
+	ft_printf("|% 00    00    15.0hhu|\n", 127);
+	printf("|% 00   00     15.0hhu|\n", 127);
 
 /*	ft_printf("\nl_min:\n");
 	ft_printf("|%d|", 5); printf("\n|%d|\n", 5);
@@ -169,7 +173,7 @@ int		main(void)
 	ft_printf("|%lld|", -9223372036854775808); printf("	|%lld|\n", -9223372036854775808);
 	ft_printf("|%lld|", -9223372036854775809); printf("	|%lld|\n", -9223372036854775809);*/
 	//sizes();
-	//
+	
 	/*ft_printf("%%c:\n");
 	printf("|%010c|\n", 110);
 	ft_printf("|%010c|\n\n", 110);
