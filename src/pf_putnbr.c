@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 18:24:56 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/11 19:28:51 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@ static void	pf_putlong(long nb, t_data *data)
 {
 	char	c;
 
-	if (nb == -9223372036854775808)
-	{
-		fill_buffer(data, "-9223372036854775808", 20);
-		return ;
-	}
-	if (nb < 0)
+	if (nb > 0)
 		nb = -nb;
-	if (nb < 10)
+	if (nb > -10)
 	{
-		c = '0' + nb;
+		c = '0' - nb;
 		fill_buffer(data, &c, 1);
 	}
 	else
@@ -61,6 +56,8 @@ static void	set_padding(t_data *data, long nb)
 	else if (!data->left && data->zero)
 		data->padding.zeros = data->l_min - data->padding.size
 			- data->padding.sign;
+	if (data->padding.zeros < 0)
+		data->padding.zeros = 0;
 	data->padding.right_spaces = 0;
 	data->padding.left_spaces = 0;
 	if (data->left)

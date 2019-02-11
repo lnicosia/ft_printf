@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 18:33:28 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/11 19:29:28 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ int		main(void)
 	ft_printf("|%lld|", -9223372036854775809); printf("	|%lld|\n", -9223372036854775809);*/
 	//sizes();
 	//
-	ft_printf("%%c:\n");
+	/*ft_printf("%%c:\n");
 	printf("|%010c|\n", 110);
 	ft_printf("|%010c|\n\n", 110);
 	printf("|%010c|\n", 110);
@@ -192,6 +192,30 @@ int		main(void)
 	ft_printf("|% 00  ++++  00  ---  15.5c|\n", 'a');
 	printf("|% 00  ++++ 00   ---  15.5c|\n", 'a');
 	ft_printf("|% 00  ++++  00  ---  15.5d|\n", 'a');
-	printf("|% 00  ++++ 00   ---  15.5d|\n", 'a');
+	printf("|% 00  ++++ 00   ---  15.5d|\n", 'a');*/
+	
+	/*ft_printf("%%s:\n");
+	printf("|%010s|\n", "bonjour");
+	ft_printf("|%010s|\n\n", "bonjour");
+	printf("|%010s|\n", "ab");
+	ft_printf("|%010s|\n\n", "ab");
+	printf("|%-10s|\n", "nb");
+	ft_printf("|%-10s|\n\n", "nb");
+	printf("|%+10s|\n", "nb");
+	ft_printf("|%+10s|\n\n", "nb");
+	printf("|%- 10s|\n", "nb");
+	ft_printf("|%- 10s|\n\n", "nb");
+	printf("|%10.5s|\n", "012345dbwvvvfdfsf01234");
+	ft_printf("|%10.5s|\n\n", "012345fsdfdfsfds01234");
+	printf("|%010.5s|\n", "nb");
+	ft_printf("|%010.5s|\n\n", "nb");
+	ft_printf("|%   ++++    ---  15.5s|\n", "ab");
+	printf("|%   ++++    ---  15.5s|\n", "ab");
+	ft_printf("|%   ++++      15.5s|\n", "des mots");
+	printf("|%   ++++      15.5s|\n", "des mots");
+	ft_printf("|% 00  ++++  00  ---  15.5s|\n", "demo");
+	printf("|% 00  ++++ 00   ---  15.5s|\n", "demo");
+	ft_printf("|% 00  ++++  00  ---  15.5d|\n", "a");
+	printf("|% 00  ++++ 00   ---  15.5d|\n", "a");*/
 	return (0);
 }
