@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/08 18:21:04 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/11 17:42:35 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		fill_buffer(t_data *data, const char *s, int size)
 	int	i;
 
 	i = 0;
-	if (data->i + size >= 100)
+	if (data->i + size >= BUFF_SIZE)
 	{
 		write(1, data->buffer, data->i);
 		data->i = 0;
@@ -54,21 +54,26 @@ void		fill_buffer(t_data *data, const char *s, int size)
 	}
 }
 
-void		init_data(t_data *data)
+void		reset_options(t_data *data)
 {
-	int	i;
-
-	i = -1;
-	while (++i < BUFF_SIZE)
-		data->buffer[i] = '\0';
 	data->left = 0;
 	data->plus = 0;
 	data->zero = 0;
 	data->space = 0;
 	data->sharp = 0;
 	data->l_min = 1;
-	data->prec = 0;
+	data->prec = -1;
 	data->size = 4;
+}
+
+void		init_buffer(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < BUFF_SIZE)
+		data->buffer[i] = '\0';
+	reset_options(data);
 }
 
 int			ft_printf(const char *restrict format, ...)
@@ -79,7 +84,7 @@ int			ft_printf(const char *restrict format, ...)
 
 	i = 0;
 	data.i = 0;
-	init_data(&data);
+	init_buffer(&data);
 	va_start(data.ap, format);
 	init_put();
 	while (format[i])
@@ -87,11 +92,12 @@ int			ft_printf(const char *restrict format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			c = parse_options(format, &i, &data);
+			c = parse_flags(format, &i, &data);
 			g_printers[c](&data);
 		}
 		else
 			fill_buffer(&data, format + i, 1);
+		reset_options(&data);
 		i++;
 	}
 	write(1, data.buffer, data.i);

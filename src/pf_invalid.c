@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 12:45:10 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/08 16:48:12 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/11 12:06:49 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	pf_invalid(t_data *data)
 {
-	(void)data;
 	fill_buffer(data, "Invalid option\n", 15);
 }

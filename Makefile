@@ -6,7 +6,7 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2019/02/08 17:48:18 by lnicosia         ###   ########.fr        #
+#    Updated: 2019/02/11 15:14:53 by gaerhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ BIN_DIR = .
 
 SRC_RAW = pf_putchar.c pf_putstr.c main.c ft_printf.c pf_putnbr.c pf_putunbr.c \
 		  pf_putaddr.c pf_putnbr_base.c pf_invalid.c pf_putpercent.c \
-		  pf_putlong_base.c parse_options.c pf_atoi.c
+		  pf_putlong_base.c parse_flags.c pf_atoi.c
 
 HEADERS = ft_printf.h
 
