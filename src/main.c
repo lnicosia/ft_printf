@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 18:07:56 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/11 18:33:28 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ int		main(void)
 	printf("|%-010.5d|\n", -12);
 	printf("|%-10.5c|\n\n", 'a');*/
 
-	ft_printf("Tests erreurs options:\n");
+	/*ft_printf("Tests erreurs options:\n");
 	printf("|%00  4d|\n", 7);
 	printf("|%00  4lhd|\n", -2147483649544444);
 	ft_printf("|%00  4lhd|\n", -2147483649544444);
 	printf("|%00  4hld|\n", -214748364944444);
-	printf("|%hhd|\n", 654654654);
+	printf("|%hhd|\n", 654654654);*/
 	
 /*	ft_printf("Precision:\n");
 	ft_printf("|%+.2d|\n", 5); printf("|%+.2d|\n\n", 5);
@@ -169,5 +169,29 @@ int		main(void)
 	ft_printf("|%lld|", -9223372036854775808); printf("	|%lld|\n", -9223372036854775808);
 	ft_printf("|%lld|", -9223372036854775809); printf("	|%lld|\n", -9223372036854775809);*/
 	//sizes();
+	//
+	ft_printf("%%c:\n");
+	printf("|%010c|\n", 110);
+	ft_printf("|%010c|\n\n", 110);
+	printf("|%010c|\n", 110);
+	ft_printf("|%010c|\n\n", 110);
+	printf("|%-10c|\n", 'n');
+	ft_printf("|%-10c|\n\n", 'n');
+	printf("|%+10c|\n", 'n');
+	ft_printf("|%+10c|\n\n", 'n');
+	printf("|%- 10c|\n", 'n');
+	ft_printf("|%- 10c|\n\n", 'n');
+	printf("|%10.5c|\n", 110);
+	ft_printf("|%10.5c|\n\n", 110);
+	printf("|%10.5c|\n", 'n');
+	ft_printf("|%10.5c|\n\n", 'n');
+	ft_printf("|%   ++++    ---  15.5c|\n", 'a');
+	printf("|%   ++++    ---  15.5c|\n", 'a');
+	ft_printf("|%   ++++      15.5c|\n", 'a');
+	printf("|%   ++++      15.5c|\n", 'a');
+	ft_printf("|% 00  ++++  00  ---  15.5c|\n", 'a');
+	printf("|% 00  ++++ 00   ---  15.5c|\n", 'a');
+	ft_printf("|% 00  ++++  00  ---  15.5d|\n", 'a');
+	printf("|% 00  ++++ 00   ---  15.5d|\n", 'a');
 	return (0);
 }

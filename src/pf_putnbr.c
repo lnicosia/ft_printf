@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 18:15:32 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/11 18:24:56 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		print_sign(t_data *data, long *nb)
 		fill_buffer(data, " ", 1);
 }
 
-void		set_padding(t_data *data, long nb)
+static void	set_padding(t_data *data, long nb)
 {
 	data->padding.size = 0;
 	data->padding.sign = (nb < 0 || data->plus || data->space) ? 1 : 0;
@@ -74,8 +74,6 @@ void		set_padding(t_data *data, long nb)
 void		pf_putnbr(t_data *data)
 {
 	long	nb;
-	long	tmp;
-	int		size;
 
 	nb = va_arg(data->ap, long);
 	if (data->size == 1)
