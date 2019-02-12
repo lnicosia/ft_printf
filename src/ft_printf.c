@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 16:11:32 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 18:23:13 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void		init_put(void)
 	while (++i < 127)
 		g_printers[i] = &pf_invalid;
 	g_printers['d'] = &pf_putnbr;
+	g_printers['D'] = &pf_putnbr;
 	g_printers['i'] = &pf_putnbr;
 	g_printers['o'] = &pf_putnbr_o;
+	g_printers['O'] = &pf_putnbr_o;
 	g_printers['u'] = &pf_putunbr;
+	g_printers['U'] = &pf_putunbr;
 	g_printers['x'] = &pf_putnbr_x;
 	g_printers['X'] = &pf_putnbr_xcaps;
 	g_printers['c'] = &pf_putchar;
