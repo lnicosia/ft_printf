@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:40:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 18:25:49 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 20:23:58 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,10 @@ char	parse_flags(const char *s, int *i, t_data *data)
 			&& s[*i] != 's' && s[*i] != 'p' && s[*i] != '%' && s[*i] != 'O'
 			&& s[*i] != 'U' && s[*i] != 'D')
 	{
-		(*i)--;
-		return ('a');
+		data->invalid = s + *i;
+		if (s[*i] == '\0')
+			(*i)--;
+		return (0);
 	}
 	return (s[*i]);
 }

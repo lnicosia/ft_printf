@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 16:10:47 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 19:41:24 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct	s_data
 	int			prec;
 	int			size;
 	int			ret;
+	const char	*invalid;
 	t_padding	padding;
 }				t_data;
 

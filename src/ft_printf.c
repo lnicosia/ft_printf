@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 18:23:13 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 20:24:13 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void		reset_options(t_data *data)
 	data->l_min = 1;
 	data->prec = -1;
 	data->size = 4;
+	data->invalid = "\0";
+	data->padding.size = 0;
+	data->padding.zeros = 0;
 }
 
 void		init_buffer(t_data *data)
