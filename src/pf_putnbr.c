@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 19:28:51 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/12 15:25:44 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static void	set_padding(t_data *data, long nb)
 {
 	data->padding.size = 0;
 	data->padding.sign = (nb < 0 || data->plus || data->space) ? 1 : 0;
+	if (nb == 0)
+		data->padding.size = 1;
 	while (nb != 0)
 	{
 		data->padding.size++;

@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 19:54:15 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/12 15:24:28 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,81 @@ int		main(void)
 	ft_printf("|%-+ 10.5d|\n", 5); printf("|%-+ 10.5d|\n\n", 5);
 	ft_printf("|%+- 10.5d|\n", -5); printf("|%+- 10.5d|\n\n", -5);*/
 
-	ft_printf("Check global %%d:\n");
+	/*ft_printf("Check global %%d:\n");
 
 	ft_printf("|%       ---  15.5hhu|\n", 127);
-	printf("|%       ---  15.5hhu|\n", 127);
+	printf("|%       ---  15.5hhu|\n\n", 127);
 	ft_printf("|%       ---  15.5hhu|\n", 128);
-	printf("|%       ---  15.5hhu|\n", 128);
+	printf("|%       ---  15.5hhu|\n\n", 128);
 	ft_printf("|% 00    00    15.5hhu|\n", 127);
-	printf("|% 00   00     15.5hhu|\n", 127);
+	printf("|% 00   00     15.5hhu|\n\n", 127);
 	ft_printf("|% 00    00    15.0hhu|\n", 127);
-	printf("|% 00   00     15.0hhu|\n", 127);
+	printf("|% 00   00     15.0hhu|\n\n", 127);
 	ft_printf("|% 00    00    15.0hhu|\n", 127);
-	printf("|% 00   00     15.0hhu|\n", 127);
+	printf("|% 00   00     15.0hhu|\n\n", 127);*/
+
+	ft_printf("\nCheck global %%x:\n\n");
+
+	ft_printf("|%       ---  15.5hhx|\n", 255);
+	printf("|%       ---  15.5hhx|\n\n", 255);
+	ft_printf("|%       ---  15.5hhx|\n", 256);
+	printf("|%       ---  15.5hhx|\n\n", 256);
+	ft_printf("|%       ---  15.5hhx|\n", 0);
+	printf("|%       ---  15.5hhx|\n\n", 0);
+	ft_printf("|% 00    00    15.5x|\n", 127);
+	printf("|% 00   00     15.5x|\n\n", 127);
+	ft_printf("|% 00    00    15.0x|\n", 127);
+	printf("|% 00   00     15.0x|\n\n", 127);
+	ft_printf("|% 00    00    15.0x|\n", 127);
+	printf("|% 00   00     15.0x|\n\n", 127);
+	ft_printf("|% 00   --- 00    15.0x|\n", 127);
+	printf("|% 00   ---00     15.0x|\n\n", 127);
+	ft_printf("|% 00   --- 00 ++   15.0x|\n", 127);
+	printf("|% 00   ---00   +++  15.0x|\n\n", 127);
+	ft_printf("|%++   15.0x|\n", 127);
+	printf("|%++  15.0x|\n", 127);
+
+	ft_printf("\nCheck global %%X:\n\n");
+
+	ft_printf("|%       ---  15.5hhX|\n", 255);
+	printf("|%       ---  15.5hhX|\n\n", 255);
+	ft_printf("|%       ---  15.5hhX|\n", 256);
+	printf("|%       ---  15.5hhX|\n\n", 256);
+	ft_printf("|%       ---  15.5hhX|\n", 0);
+	printf("|%       ---  15.5hhX|\n\n", 0);
+	ft_printf("|% 00    00    15.5X|\n", 127);
+	printf("|% 00   00     15.5X|\n\n", 127);
+	ft_printf("|% 00    00    15.0X|\n", 127);
+	printf("|% 00   00     15.0X|\n\n", 127);
+	ft_printf("|% 00    00    15.0X|\n", 127);
+	printf("|% 00   00     15.0X|\n\n", 127);
+	ft_printf("|% 00   --- 00    15.0X|\n", 127);
+	printf("|% 00   ---00     15.0X|\n\n", 127);
+	ft_printf("|% 00   --- 00 ++   15.0X|\n", 127);
+	printf("|% 00   ---00   +++  15.0X|\n\n", 127);
+	ft_printf("|%++   15.0X|\n", 127);
+	printf("|%++  15.0X|\n", 127);
+
+	ft_printf("\nCheck global %%o:\n\n");
+
+	ft_printf("|%       ---  15.5hho|\n", 255);
+	printf("|%       ---  15.5hho|\n\n", 255);
+	ft_printf("|%       ---  15.5hho|\n", 256);
+	printf("|%       ---  15.5hho|\n\n", 256);
+	ft_printf("|%       ---  15.5hho|\n", 0);
+	printf("|%       ---  15.5hho|\n\n", 0);
+	ft_printf("|% 00    00    15.5o|\n", 127);
+	printf("|% 00   00     15.5o|\n\n", 127);
+	ft_printf("|% 00    00    15.0o|\n", 127);
+	printf("|% 00   00     15.0o|\n\n", 127);
+	ft_printf("|% 00    00    15.0o|\n", 127);
+	printf("|% 00   00     15.0o|\n\n", 127);
+	ft_printf("|% 00   --- 00    15.0o|\n", 127);
+	printf("|% 00   ---00     15.0o|\n\n", 127);
+	ft_printf("|% 00   --- 00 ++   15.0o|\n", 127);
+	printf("|% 00   ---00   +++  15.0o|\n\n", 127);
+	ft_printf("|%++   15.0o|\n", 127);
+	printf("|%++  15.0o|\n", 127);
 
 /*	ft_printf("\nl_min:\n");
 	ft_printf("|%d|", 5); printf("\n|%d|\n", 5);

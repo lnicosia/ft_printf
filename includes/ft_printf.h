@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 18:57:50 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/12 15:06:12 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	pf_putaddr(t_data *data);
 void	pf_putnbr_x(t_data *data);
 void	pf_putnbr_xcaps(t_data *data);
 void	pf_putnbr_o(t_data *data);
-void	pf_putlong_base(long nbr, char *base, t_data *data);
+void	pf_putlong_base(unsigned long nbr, char *base, t_data *data);
 void	pf_invalid(t_data *data);
 void	pf_putpercent(t_data *data);
 void	fill_buffer(t_data *data, const char *s, int size);

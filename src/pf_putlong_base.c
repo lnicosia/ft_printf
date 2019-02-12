@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:18:56 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/08 16:52:52 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 15:13:28 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	pf_check_base(char *base)
 	return (i);
 }
 
-static void	pf_print(long nbr, int len, char *base, t_data *data)
+static void	pf_print(unsigned long nbr, int len, char *base, t_data *data)
 {
 	if (nbr < len)
 		fill_buffer(data, &base[nbr], 1);
@@ -46,7 +46,7 @@ static void	pf_print(long nbr, int len, char *base, t_data *data)
 	}
 }
 
-void		pf_putlong_base(long nbr, char *base, t_data *data)
+void		pf_putlong_base(unsigned long nbr, char *base, t_data *data)
 {
 	int	len;
 	int	min_stock;
@@ -55,16 +55,6 @@ void		pf_putlong_base(long nbr, char *base, t_data *data)
 	min_stock = -1;
 	if (len > 1)
 	{
-		if (nbr == -2147483648)
-		{
-			min_stock = -(nbr % len);
-			nbr = nbr / len;
-		}
-		if (nbr < 0)
-		{
-			fill_buffer(data, "-", 1);
-			nbr = -nbr;
-		}
 		pf_print(nbr, len, base, data);
 		if (min_stock != -1)
 			fill_buffer(data, &base[min_stock % len], 1);
