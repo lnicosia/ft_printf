@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 17:31:40 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 18:02:44 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	pf_putstr(t_data *data)
 		return ;
 	}
 	set_padding(data, s);
+	if (data->padding.size == 0)
+		return ;
 	while (data->padding.left_spaces > 0)
 	{
 		fill_buffer(data, " ", 1);
