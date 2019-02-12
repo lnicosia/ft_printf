@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 15:24:28 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 15:44:17 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int		main(void)
 	ft_printf("|% 00    00    15.0hhu|\n", 127);
 	printf("|% 00   00     15.0hhu|\n\n", 127);*/
 
-	ft_printf("\nCheck global %%x:\n\n");
+	/*ft_printf("\nCheck global %%x:\n\n");
 
 	ft_printf("|%       ---  15.5hhx|\n", 255);
 	printf("|%       ---  15.5hhx|\n\n", 255);
@@ -156,7 +156,7 @@ int		main(void)
 	ft_printf("|% 00   --- 00 ++   15.0o|\n", 127);
 	printf("|% 00   ---00   +++  15.0o|\n\n", 127);
 	ft_printf("|%++   15.0o|\n", 127);
-	printf("|%++  15.0o|\n", 127);
+	printf("|%++  15.0o|\n", 127);*/
 
 /*	ft_printf("\nl_min:\n");
 	ft_printf("|%d|", 5); printf("\n|%d|\n", 5);

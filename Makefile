@@ -6,11 +6,11 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2019/02/11 15:14:53 by gaerhard         ###   ########.fr        #
+#    Updated: 2019/02/12 15:53:49 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+NAME = libftprintf.a
 
 MAKEFILE = Makefile
 
@@ -19,7 +19,7 @@ OBJ_DIR = obj
 INCLUDES_DIR = includes
 BIN_DIR = .
 
-SRC_RAW = pf_putchar.c pf_putstr.c main.c ft_printf.c pf_putnbr.c pf_putunbr.c \
+SRC_RAW = pf_putchar.c pf_putstr.c ft_printf.c pf_putnbr.c pf_putunbr.c \
 		  pf_putaddr.c pf_putnbr_base.c pf_invalid.c pf_putpercent.c \
 		  pf_putlong_base.c parse_flags.c pf_atoi.c
 
@@ -29,23 +29,29 @@ SRC = $(addprefix $(SRC_DIR)/, $(SRC_RAW))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_RAW:.c=.o))
 INCLUDES = $(addprefix $(INCLUDES_DIR)/, $(HEADERS))
 
-CFLAGS = -g3 -O3 -Wall -I $(INCLUDES_DIR) -fsanitize=address \
+CFLAGS = -g3 -O3 -Wall -I $(INCLUDES_DIR) \
 
 RED := "\033[0;31m"
 GREEN := "\033[0;32m"
 CYAN := "\033[0;36m"
+YELLOW := "\033[0;33m"
 RESET :="\033[0m"
 
-all:
-	@make $(BIN_DIR)/$(NAME)
+all: $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDES) $(MAKEFILE)
 	@mkdir -p $(OBJ_DIR)
 	@gcc -c $< -o $@ $(CFLAGS) 
 
-$(BIN_DIR)/$(NAME): $(OBJ)
-	@gcc $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo ${GREEN}"[INFO] Compiled '$(NAME)' executable with success!"${RESET}
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo ${GREEN}"[INFO] Created libftprintf.a successfully!"${RESET}
+
+test:
+	@gcc -c $(CFLAGS) $(SRC_DIR)/main.c -o $(OBJ_DIR)/main.o
+	@gcc $(CFLAGS) $(OBJ) $(OBJ_DIR)/main.o -o ft_printf
+	@echo ${GREEN}"[INFO] Compiled 'ft_printf' executable with success!"${RESET}
 
 clean: 
 	@rm -f $(OBJ)
@@ -55,6 +61,7 @@ clean:
 
 fclean: clean
 	@rm -Rf $(NAME)
+	@rm -Rf ft_printf
 	@echo ${CYAN}"[INFO] Removed everything because SKIBIDI PA PA"${RESET}
 
 re: fclean all
