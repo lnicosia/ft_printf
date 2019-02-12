@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 15:26:21 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 17:34:04 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ static void	set_padding(t_data *data, unsigned long nb)
 		data->padding.size++;
 		nb /= 10;
 	}
-	if (data->prec == 0)
-		data->padding.zeros = 0;
-	else if (data->prec > 0)
+	data->padding.zeros = 0;
+	if (data->prec > 0)
 		data->padding.zeros = data->prec - data->padding.size;
 	else if (!data->left && data->zero)
-		data->padding.zeros = data->l_min - data->padding.size
-			- data->padding.sign;
+		data->padding.zeros = data->l_min - data->padding.size;
 	if (data->padding.zeros < 0)
 		data->padding.zeros = 0;
 	data->padding.right_spaces = 0;
@@ -73,13 +71,6 @@ void		pf_putunbr(t_data *data)
 	{
 		fill_buffer(data, " ", 1);
 		data->padding.left_spaces--;
-	}
-	if (data->padding.sign)
-	{
-		if (data->plus)
-			fill_buffer(data, "+", 1);
-		else if (data->space)
-			fill_buffer(data, " ", 1);
 	}
 	while (data->padding.zeros > 0)
 	{

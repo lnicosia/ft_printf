@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 22:33:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 15:25:02 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 17:22:47 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ static void	set_padding(t_data *data, unsigned long nb, int base_len)
 		data->padding.size++;
 		nb /= base_len;
 	}
-	if (data->prec == 0)
-		data->padding.zeros = 0;
-	else if (data->prec > 0)
+	data->padding.zeros = 0;
+	if (data->prec > 0)
 		data->padding.zeros = data->prec - data->padding.size;
 	else if (!data->left && data->zero)
 		data->padding.zeros = data->l_min - data->padding.size;
@@ -62,6 +61,8 @@ void	pf_putnbr_x(t_data *data)
 		fill_buffer(data, "0", 1);
 		data->padding.zeros--;
 	}
+	if (data->sharp && nb)
+		fill_buffer(data, "0x", 2);
 	pf_putlong_base(nb, "0123456789abcdef", data);
 	while (data->padding.right_spaces > 0)
 	{
@@ -92,6 +93,8 @@ void	pf_putnbr_xcaps(t_data *data)
 		fill_buffer(data, "0", 1);
 		data->padding.zeros--;
 	}
+	if (data->sharp && nb)
+		fill_buffer(data, "0X", 2);
 	pf_putlong_base(nb, "0123456789ABCDEF", data);
 	while (data->padding.right_spaces > 0)
 	{
@@ -122,6 +125,8 @@ void	pf_putnbr_o(t_data *data)
 		fill_buffer(data, "0", 1);
 		data->padding.zeros--;
 	}
+	if (data->sharp && nb)
+		fill_buffer(data, "0x", 2);
 	pf_putlong_base(nb, "01234567", data);
 	while (data->padding.right_spaces > 0)
 	{

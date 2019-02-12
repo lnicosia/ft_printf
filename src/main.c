@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 15:44:17 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 17:10:17 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ void	sizes(void)
 
 int		main(void)
 {
+	ft_printf("%%:\n");
+	ft_printf("|%%|\n", 42);
+	printf("|%%|\n\n", 42);
+	ft_printf("|%5%|\n", 42);
+	printf("|%5%|\n\n", 42);
+	ft_printf("|%---5%|\n", 42);
+	printf("|%---5%|\n\n", 42);
+	ft_printf("|%00005%|\n", 42);
+	printf("|%00005%|\n\n", 42);
+
 	/*long a = 0;
 	ft_printf("J'ai %i %s et %c yeux et 0.1%% de capacite cerebrale\n\n", 4, "dents", '2');
 	printf("J'ai %i %s et %c yeux et 0.1%% de capacite cerebrale\n\n", 4, "dents", '2');

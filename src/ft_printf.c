@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 17:42:35 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/12 16:11:32 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		fill_buffer(t_data *data, const char *s, int size)
 	{
 		write(1, data->buffer, data->i);
 		data->i = 0;
+		data->ret += 100;
 	}
 	else
 	{
@@ -84,6 +85,7 @@ int			ft_printf(const char *restrict format, ...)
 
 	i = 0;
 	data.i = 0;
+	data.ret = 0;
 	init_buffer(&data);
 	va_start(data.ap, format);
 	init_put();
@@ -101,6 +103,7 @@ int			ft_printf(const char *restrict format, ...)
 		i++;
 	}
 	write(1, data.buffer, data.i);
+	data.ret += data.i;
 	va_end(data.ap);
-	return (0);
+	return (data.ret);
 }

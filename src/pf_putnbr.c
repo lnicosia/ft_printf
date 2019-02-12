@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 15:25:44 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/12 17:17:54 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ static void	set_padding(t_data *data, long nb)
 		data->padding.size++;
 		nb /= 10;
 	}
-	if (data->prec == 0)
-		data->padding.zeros = 0;
-	else if (data->prec > 0)
+	data->padding.zeros = 0;
+	if (data->prec > 0)
 		data->padding.zeros = data->prec - data->padding.size;
 	else if (!data->left && data->zero)
 		data->padding.zeros = data->l_min - data->padding.size

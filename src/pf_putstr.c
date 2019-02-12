@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/11 18:58:26 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/12 17:31:40 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int			ft_strlen(const char *s)
 static void	set_padding(t_data *data, const char *s)
 {
 	data->padding.size = ft_strlen(s);
+	data->padding.zeros = 0;
 	if (data->prec >= 0 && data->prec < data->padding.size)
 		data->padding.size = data->prec;
 	if (!data->left && data->zero)
@@ -44,6 +45,11 @@ void	pf_putstr(t_data *data)
 	const char	*s;
 
 	s = va_arg(data->ap, char *);
+	if (s == NULL)
+	{
+		fill_buffer(data, "(null)", 6);
+		return ;
+	}
 	set_padding(data, s);
 	while (data->padding.left_spaces > 0)
 	{
