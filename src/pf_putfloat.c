@@ -53,14 +53,17 @@ void	rev_str(char *str, int len)
 	char	tmp;
 
 	i = 0; 
-	while (i < len - 1) 
+//	printf("%d\n", len);
+//	printf("avant rev_str = |%s|\n", str);
+	while (i < len)
 	{ 
 		tmp = str[i]; 
-		str[i] = str[len]; 
-		str[len] = tmp; 
+		str[i] = str[len - 1]; 
+		str[len - 1] = tmp;
 		i++;
 		len--; 
 	} 
+//	printf("apres rev_str = |%s|\n", str);
 }
 
 int		pf_itoa(t_data *data, long nb, int precision)
@@ -70,6 +73,11 @@ int		pf_itoa(t_data *data, long nb, int precision)
 	char	*str;
 
 	size = get_size(nb);
+	if (nb == 0)
+	{
+		fill_buffer(data, "0", 1);
+		return (1);
+	}
 	if (!(str = pf_strnew(size)))
 		return (-1);
 	i = 0;
@@ -80,10 +88,12 @@ int		pf_itoa(t_data *data, long nb, int precision)
 	}
 	while (i < precision)
 		str[i++] = '0';
+//	printf("str = |%s|\n", str);
 	rev_str(str, i);
-	str[i] = '\0';
+	str[++i] = '\0';
 	fill_buffer(data, str, size);
 	free(str);
+	str = NULL;
 	return (i);
 }
 
@@ -91,19 +101,22 @@ void	pf_putfloat(t_data *data)
 {
 	int			i;
 	long		i_part;
-	long double	nb;
+	double	nb;
 	double		f_part;
 
-	nb = va_arg(data->ap, long double);
+	if (data->prec == -1)
+		data->prec = 6;
+	nb = va_arg(data->ap, double);
 	i_part = (long)nb;
+	//printf("%f\n", nb);
 	f_part = nb - (double)i_part;
 	i = pf_itoa(data, i_part, 0);
 	if (data->prec != 0)
 	{
 		fill_buffer(data, ".", 1);
-		f_part = f_part * power_over_nine_thousand(10, data->prec);
-		printf("f_part %d\n", (int)(f_part + 0.5));
-		pf_itoa(data, (int)f_part, data->prec);
+		f_part = f_part * power_over_nine_thousand(10, data->prec) + 0.5;
+	//	printf("f_part %ld\n", (long)(f_part + 0.5));
+		pf_itoa(data, (long)f_part, data->prec);
 	}
 }
 /*

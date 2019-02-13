@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 14:39:18 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/13 17:57:48 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,39 @@ void	sizes(void)
 
 int		main(void)
 {
-	//ft_printf("%f\n", 1.52);
-	ft_printf("@main_ftprintf: %####0000 33..1..#00d\\n\n", 256);
-	printf("@main_ftprintf: %####0000 33..1..#00d\\n\n", 256);
+	ft_printf("2147483648.123450012: %f\n", 2147483648.123450012);
+	printf("%f\n", 2147483648.123450012);
+	ft_printf("0.01: %f\n", 0.01);
+	printf("%f\n", 0.01);
+	ft_printf("0.0: %f\n", 0.0);
+	printf("%f\n", 0.0);
+	ft_printf("1: %f\n", 1);
+	printf("%f\n", 1);
+	ft_printf("1.0: %f\n", 1.0);
+	printf("%f\n", 1.0);
+	ft_printf("01.01: %f\n", 01.01);
+	printf("%f\n", 01.01);
+	ft_printf("9999999999999999999: %f\n", 9999999999999999999);
+	printf("%f\n", 9999999999999999999);
+	ft_printf("0.00000000000000000001: %f\n", 0.00000000000000000001);
+	printf("%f\n", 0.00000000000000000001);
+	ft_printf("0.1234567: %f\n", 0.1234567);
+	printf("%f\n", 0.1234567);
+	ft_printf("0.1234564: %f\n", 0.1234564);
+	printf("%f\n", 0.1234564);
+	ft_printf("10: %f\n", 10);
+	printf("%f\n", 10);
+	ft_printf("-0: %f\n", -0);
+	printf("%f\n", -0);
+	ft_printf("-1.5: %f\n", -1.5);
+	printf("%f\n", -1.5);
+	ft_printf("-0.05: %f\n", -0.05);
+	printf("%f\n", -0.05);
+	ft_printf("45: %f\n", -45);
+	printf("%f\n", -45);
+	//printf("%d\n", 1.52);
+//	ft_printf("@main_ftprintf: %####0000 33..1..#00d\\n\n", 256);
+//	printf("@main_ftprintf: %####0000 33..1..#00d\\n\n", 256);
 	/*long a = 0;
 	ft_printf("J'ai %i %s et %c yeux et 0.1%% de capacite cerebrale\n\n", 4, "dents", '2');
 	printf("J'ai %i %s et %c yeux et 0.1%% de capacite cerebrale\n\n", 4, "dents", '2');
