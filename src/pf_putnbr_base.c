@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 22:33:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 13:48:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 14:12:01 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void					pf_putnbr_o(t_data *data)
 	data->padding.size = data->sharp ? 1 : 0;
 	set_padding(data, nb, 8);
 	put_left_spaces(data);
-	if (data->sharp && nb)
+	if (data->sharp)
 		fill_buffer(data, "0", 1);
 	put_zeros(data);
 	if (nb != 0 || data->prec != 0)

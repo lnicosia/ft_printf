@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:40:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 12:30:37 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 14:28:20 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ char	parse_flags(const char *s, int *i, t_data *data)
 	}
 	if (s[*i] == '.')
 	{
-		(*i)++;
+		while (s[*i] == '.')
+			(*i)++;
 		if (s[*i] >= '0' && s[*i] <= '9')
 		{
 			nb = pf_atoi(s + *i);
