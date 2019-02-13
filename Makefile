@@ -6,7 +6,7 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2019/02/13 14:34:03 by gaerhard         ###   ########.fr        #
+#    Updated: 2019/02/13 14:48:07 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,9 +48,14 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 	@echo ${GREEN}"[INFO] Created libftprintf.a successfully!"${RESET}
 
-test:
+test: all
 	@gcc -c $(CFLAGS) $(SRC_DIR)/main.c -o $(OBJ_DIR)/main.o
 	@gcc $(CFLAGS) $(OBJ) $(OBJ_DIR)/main.o -o ft_printf
+	@echo ${GREEN}"[INFO] Compiled 'ft_printf' executable with success!"${RESET}
+
+double: all
+	@gcc -c $(CFLAGS) $(SRC_DIR)/main_f.c -o $(OBJ_DIR)/main_f.o
+	@gcc $(CFLAGS) $(OBJ) $(OBJ_DIR)/main_f.o -o ft_printf
 	@echo ${GREEN}"[INFO] Compiled 'ft_printf' executable with success!"${RESET}
 
 clean: 
