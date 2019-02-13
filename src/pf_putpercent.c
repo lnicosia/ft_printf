@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:22:53 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 13:51:04 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 17:59:41 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 static void	set_padding(t_data *data)
 {
 	data->padding.zeros = 0;
-	if (data->prec > 0)
-		data->padding.zeros = data->prec - 1;
-	else if (!data->left && data->zero)
+	if (!data->left && data->zero)
 		data->padding.zeros = data->l_min - 1;
 	if (data->padding.zeros < 0)
 		data->padding.zeros = 0;

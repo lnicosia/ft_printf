@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 13:52:32 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 16:21:04 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int			ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
@@ -46,7 +48,7 @@ void	pf_putstr(t_data *data)
 	const char	*s;
 
 	s = va_arg(data->ap, char *);
-	if (s == NULL)
+	if (s == NULL && data->l_min == 0)
 	{
 		fill_buffer(data, "(null)", 6);
 		return ;

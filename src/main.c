@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 14:39:18 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:11:31 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,77 @@ void	sizes(void)
 
 int		main(void)
 {
-	//ft_printf("%f\n", 1.52);
-	ft_printf("@main_ftprintf: %####0000 33..1..#00d\\n\n", 256);
-	printf("@main_ftprintf: %####0000 33..1..#00d\\n\n", 256);
+	ft_printf("{%#.5x}\n", 1);
+	printf("{%#.5x}\n\n", 1);
+
+	ft_printf("{%#5x}\n", 1);
+	printf("{%#5x}\n\n", 1);
+
+	ft_printf("{%.5x}\n", 1);
+	printf("{%.5x}\n\n", 1);
+
+	ft_printf("{%5.5x}\n", 1);
+	printf("{%5.5x}\n\n", 1);
+
+	ft_printf("{%#.5x}\n", 0);
+	printf("{%#.5x}\n\n", 0);
+
+	ft_printf("{%.5x}\n", 0);
+	printf("{%.5x}\n\n", 0);
+
+	ft_printf("{%5.5x}\n", 0);
+	printf("{%5.5x}\n\n", 0);
+
+	ft_printf("{%#5x}\n", 0);
+	printf("{%#5x}\n\n", 0);
+
+	/*ft_printf("{%05.%}\n", 0);
+	printf("{%05.%}\n\n", 0);
+
+	ft_printf("{%5.%}\n", 0);
+	printf("{%5.%}\n\n", 0);
+
+	ft_printf("{%05.1%}\n", 0);
+	printf("{%05.1%}\n\n", 0);
+	
+	ft_printf("{%05.3%}\n", 0);
+	printf("{%05.3%}\n\n", 0);*/
+
+	/*ft_printf("{%5p}\n", 0);
+	printf("{%5p}\n\n", 0);
+
+	ft_printf("|%9.2p|\n", 1234);
+	printf("|%9.2p|\n\n", 1234);
+
+	ft_printf("|%9.2p|\n", 0);
+	printf("|%9.2p|\n\n", 0);
+
+	ft_printf("|%9.p|\n", 1234);
+	printf("|%9.p|\n\n", 1234);
+
+	ft_printf("|%9.0p|\n", 0);
+	printf("|%9.0p|\n\n", 0);*/
+
+	/*ft_printf("@moulitest: |%.o %.0o|\n", 0, 0);
+	printf("@moulitest: |%.o %.0o|\n\n", 0, 0);
+
+	ft_printf("@moulitest: |%#.o %#.0o|\n", 0, 0);
+	printf("@moulitest: |%#.o %#.0o|\n\n", 0, 0);
+
+	ft_printf("@moulitest: |%o|\n", 0);
+	printf("@moulitest: |%o|\n\n", 0);
+
+	ft_printf("|%#o|\n", 0);
+	printf("|%#o|\n\n", 0);
+
+	ft_printf("|%#.o|\n", 0);
+	printf("|%#.o|\n\n", 0);
+
+	ft_printf("|%#6o|\n", 2500);
+	printf("|%#6o|\n\n", 2500);
+
+	ft_printf("|%-#6o|\n", 2500);
+	printf("|%-#6o|\n\n", 2500);*/
 	/*long a = 0;
 	ft_printf("J'ai %i %s et %c yeux et 0.1%% de capacite cerebrale\n\n", 4, "dents", '2');
 	printf("J'ai %i %s et %c yeux et 0.1%% de capacite cerebrale\n\n", 4, "dents", '2');
