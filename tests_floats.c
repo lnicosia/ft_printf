@@ -1,5 +1,22 @@
 #include <stdio.h>
-int		power_over_nine_thousand(int nb, int power)
+#include "ft_printf.h"
+
+static int	get_size(long nbr)
+{
+	int size;
+
+	size = 0;
+	if (nbr <= 0)
+		size++;
+	while (nbr != 0)
+	{
+		nbr /= 10;
+		size++;
+	}
+	return (size);
+}
+
+static int	power_over_nine_thousand(long nb, int power)
 {
 	int tmp;
 
@@ -28,9 +45,12 @@ void	rev_str(char *str, int len)
 		len--; 
 	} 
 }
-int		pf_itoa(int nb, char *str, int precision)
+
+int		pf_itoa(long nb, int precision)
 {
-	int i;
+	int		i;
+	int		size;
+	char	*str;
 
 	i = 0;
 	while (nb)
@@ -40,27 +60,28 @@ int		pf_itoa(int nb, char *str, int precision)
 	}
 	while (i < precision)
 		str[i++] = '0';
-	//printf("inside itoa|%s|\n", str);
 	rev_str(str, i);
 	str[i] = '\0';
 	return (i);
 }
 
-void	pf_ftoa(double nb, char *res, int precision)
+void	pf_ftoa(t_data *data)
 {
-	int		i;
-	int		i_part;
-	double	f_part;
+	int			i;
+	long		i_part;
+	long double	nb;
+	double		f_part;
 
-	i_part = (int)nb;
-	f_part = nb - (float)i_part;
-	i = pf_itoa(i_part, res, 0);
-	if (precision != 0)
+	nb = va_arg(data->ap, long double);
+	i_part = (long)nb;
+	f_part = nb - (double)i_part;
+	i = pf_itoa(i_part, 0);
+	if (data->prec != 0)
 	{
-		res[i] = '.';
-		f_part = f_part * power_over_nine_thousand(10, precision);
+		fill_buffer(data, ".", 1);
+		f_part = f_part * power_over_nine_thousand(10, data->prec);
 		printf("f_part %d\n", (int)(f_part + 0.5));
-		pf_itoa((int)f_part, res + i + 1, precision);
+		pf_itoa((int)f_part, data->prec);
 	}
 }
 
@@ -70,7 +91,7 @@ int	main(void)
 
 	printf("15.36: %.2f\n", 15.36);
 	printf("1.5123: %f\n", 1.5123);
-	printf("1.5123456789: %f\n", 1.5123456789);
+	printf("1.5123456789: %.7lf\n", 1.5123456789);
 	printf("1.0: %f\n", 1.0);
 	printf("1.000: %f\n", 1.000);
 	printf("1.0000000000: %f\n", 1.0000000000);
@@ -86,7 +107,7 @@ int	main(void)
 	printf("12345678.12345678 %f\n", 12345678.12345678);
 	printf("2147483647.12345678 %.8f\n", 2147483647.12345678);
 	printf("2147483648.12345678 %.15Lf\n", (long double)2.1);
-	pf_ftoa(15.36, str, 2);
-	printf("|%s|\n", str);
+//	pf_ftoa(15.36, str, 2);
+//	printf("|%s|\n", str);
 	return (0);
 }
