@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 22:33:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 18:12:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:24:34 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void					pf_putnbr_xcaps(t_data *data)
 	unsigned long	nb;
 
 	nb = cast(data);
-	data->padding.size = data->sharp ? 2 : 0;
+	data->padding.size = (data->sharp && data->prec == -1) ? 2 : 0;
 	set_padding(data, nb, 16);
 	put_left_spaces(data);
 	if (data->sharp && nb)
