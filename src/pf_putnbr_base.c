@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 22:33:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 18:24:34 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 19:21:31 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ static void	set_padding(t_data *data, unsigned long nb, int base_len)
 		nb /= base_len;
 	}
 	data->padding.zeros = 0;
-	if (data->prec != -1)
+	printf("size = %d\n", data->padding.size);
+	if (data->prec != -1 && data->l_min == 0)
 		data->padding.zeros = data->prec - data->padding.size;
 	else if (!data->left && data->zero)
 		data->padding.zeros = data->l_min - data->padding.size;
+	printf("zeros = %d\n", data->padding.zeros);
 	if (data->padding.zeros < 0)
 		data->padding.zeros = 0;
 	data->padding.right_spaces = 0;
@@ -58,7 +60,8 @@ void					pf_putnbr_x(t_data *data)
 	unsigned long	nb;
 
 	nb = cast(data);
-	data->padding.size = (data->sharp && data->prec == -1) ? 2 : 0;
+	data->padding.size = (data->sharp && (data->prec == -1 || data->l_min != 0)) ? 2 : 0;
+	printf("size = %d\n", data->padding.size);
 	set_padding(data, nb, 16);
 	put_left_spaces(data);
 	if (data->sharp && nb)
