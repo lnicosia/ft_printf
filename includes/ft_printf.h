@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 14:35:07 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/13 17:01:00 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
-# define BUFF_SIZE 100
+# define BUFF_SIZE 4096
 
 typedef struct	s_padding
 {

@@ -6,14 +6,14 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:40:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 14:28:20 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 17:49:21 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-void	parse_options(const char *s, int *i, t_data *data)
+static void	parse_options(const char *s, int *i, t_data *data)
 {
 	while (s[*i] == '-' || s[*i] == '+' || s[*i] == '#' || s[*i] == ' '
 			|| s[*i] == '0')
@@ -32,7 +32,45 @@ void	parse_options(const char *s, int *i, t_data *data)
 	}
 }
 
-void	parse_size(const char *s, int *i, t_data *data)
+static void	parse_l_min(const char *s, int *i, t_data *data)
+{
+	int	nb;
+
+	if (s[*i] >= '1' && s[*i] <= '9')
+	{
+		nb = pf_atoi(s + *i);
+		data->l_min = nb;
+		while (nb != 0)
+		{
+			(*i)++;
+			nb /= 10;
+		}
+	}
+}
+
+static void parse_prec(const char *s, int *i, t_data *data)
+{
+	int	nb;
+
+	while (s[*i] == '.')
+		(*i)++;
+	if (s[*i] >= '0' && s[*i] <= '9')
+	{
+		nb = pf_atoi(s + *i);
+		data->prec = nb;
+		if (nb == 0)
+			(*i)++;
+		while (nb != 0)
+		{
+			(*i)++;
+			nb /= 10;
+		}
+	}
+	else
+		data->prec = 0;
+}
+
+static void	parse_size(const char *s, int *i, t_data *data)
 {
 	int	l;
 	int	h;
@@ -59,40 +97,20 @@ void	parse_size(const char *s, int *i, t_data *data)
 
 char	parse_flags(const char *s, int *i, t_data *data)
 {
-	int	nb;
-
-	parse_options(s, i, data);
-	if (s[*i] >= '1' && s[*i] <= '9')
+	while (s[*i] == 'l' || s[*i] == 'h' || s[*i] == 'z' || s[*i] == 'j'
+			|| s[*i] == '.' || s[*i] == '-' || s[*i] == '+' || s[*i] == '#'
+			|| s[*i] == ' ' || (s[*i] >= '0' && s[*i] <= '9'))
 	{
-		nb = pf_atoi(s + *i);
-		data->l_min = nb;
-		while (nb != 0)
-		{
-			(*i)++;
-			nb /= 10;
-		}
+		if (s[*i] == '-' || s[*i] == '+' || s[*i] == '#' || s[*i] == ' '
+			|| s[*i] == '0')
+			parse_options(s, i, data);
+		if (s[*i] >= '1' && s[*i] <= '9')
+			parse_l_min(s, i, data);
+		if (s[*i] == '.')
+			parse_prec(s, i, data);
+		if (s[*i] == 'l' || s[*i] == 'h' || s[*i] == 'z' || s[*i] == 'j')
+			parse_size(s, i, data);
 	}
-	if (s[*i] == '.')
-	{
-		while (s[*i] == '.')
-			(*i)++;
-		if (s[*i] >= '0' && s[*i] <= '9')
-		{
-			nb = pf_atoi(s + *i);
-			data->prec = nb;
-			if (nb == 0)
-				(*i)++;
-			while (nb != 0)
-			{
-				(*i)++;
-				nb /= 10;
-			}
-		}
-		else
-			data->prec = 0;
-	}
-	parse_size(s, i, data);
-	parse_options(s, i, data);
 	if (s[*i] != 'd' && s[*i] != 'i' && s[*i] != 'o' && s[*i] != 'u'
 			&& s[*i] != 'x' && s[*i] != 'X' && s[*i] != 'f' && s[*i] != 'c'
 			&& s[*i] != 's' && s[*i] != 'p' && s[*i] != '%' && s[*i] != 'O'

@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 22:33:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 14:12:01 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:12:00 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	set_padding(t_data *data, unsigned long nb, int base_len)
 		nb /= base_len;
 	}
 	data->padding.zeros = 0;
-	if (data->prec > 0)
+	if (data->prec != -1)
 		data->padding.zeros = data->prec - data->padding.size;
 	else if (!data->left && data->zero)
 		data->padding.zeros = data->l_min - data->padding.size;
@@ -58,7 +58,7 @@ void					pf_putnbr_x(t_data *data)
 	unsigned long	nb;
 
 	nb = cast(data);
-	data->padding.size = data->sharp ? 2 : 0;
+	data->padding.size = (data->sharp && data->prec == -1) ? 2 : 0;
 	set_padding(data, nb, 16);
 	put_left_spaces(data);
 	if (data->sharp && nb)
@@ -93,10 +93,10 @@ void					pf_putnbr_o(t_data *data)
 	data->padding.size = data->sharp ? 1 : 0;
 	set_padding(data, nb, 8);
 	put_left_spaces(data);
-	if (data->sharp)
+	if (data->sharp || (nb == 0 && data->prec != 0))
 		fill_buffer(data, "0", 1);
 	put_zeros(data);
-	if (nb != 0 || data->prec != 0)
+	if (nb != 0)
 		pf_putlong_base(nb, "01234567", data);
 	put_right_spaces(data);
 }
