@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 19:41:24 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 11:50:16 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct	s_padding
 typedef struct	s_data
 {
 	va_list		ap;
-	const char	*options;
 	char		buffer[BUFF_SIZE];
 	int			i;
 	int			left;

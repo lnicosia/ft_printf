@@ -6,11 +6,12 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 17:34:04 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 13:52:41 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "put_padding.h"
 
 static void	pf_putulong(unsigned long nb, t_data *data)
 {
@@ -67,20 +68,8 @@ void		pf_putunbr(t_data *data)
 	else if (data->size == 4)
 		nb = (unsigned int)nb;
 	set_padding(data, nb);
-	while (data->padding.left_spaces > 0)
-	{
-		fill_buffer(data, " ", 1);
-		data->padding.left_spaces--;
-	}
-	while (data->padding.zeros > 0)
-	{
-		fill_buffer(data, "0", 1);
-		data->padding.zeros--;
-	}
+	put_left_spaces(data);
+	put_zeros(data);
 	pf_putulong(nb, data);
-	while (data->padding.right_spaces > 0)
-	{
-		fill_buffer(data, " ", 1);
-		data->padding.right_spaces--;
-	}
+	put_right_spaces(data);
 }

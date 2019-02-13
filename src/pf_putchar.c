@@ -6,11 +6,12 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:42:42 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 18:30:16 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 13:50:10 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "put_padding.h"
 
 static void	set_padding(t_data *data, char c)
 {
@@ -34,20 +35,8 @@ void		pf_putchar(t_data *data)
 
 	c = va_arg(data->ap, int);
 	set_padding(data, c);
-	while (data->padding.left_spaces > 0)
-	{
-		fill_buffer(data, " ", 1);
-		data->padding.left_spaces--;
-	}
-	while (data->padding.zeros > 0)
-	{
-		fill_buffer(data, "0", 1);
-		data->padding.zeros--;
-	}
+	put_left_spaces(data);
+	put_zeros(data);
 	fill_buffer(data, &c, 1);
-	while (data->padding.right_spaces > 0)
-	{
-		fill_buffer(data, " ", 1);
-		data->padding.right_spaces--;
-	}
+	put_right_spaces(data);
 }

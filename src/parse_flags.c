@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:40:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/12 20:23:58 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 12:30:37 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,35 @@ void	parse_options(const char *s, int *i, t_data *data)
 	}
 }
 
+void	parse_size(const char *s, int *i, t_data *data)
+{
+	int	l;
+	int	h;
+
+	l = 0;
+	h = 0;
+	while (s[*i] == 'l' || s[*i] == 'h' || s[*i] == 'z' || s[*i] == 'j')
+	{
+		if (s[*i] == 'l')
+			l++;
+		else if (s[*i] == 'h')
+			h++;
+		(*i)++;
+	}
+	if (l == 0 && h == 0)
+		data->size = 4;
+	else if (l >= 1)
+		data->size = 8;
+	else if (h == 1)
+		data->size = 2;
+	else if (h == 2)
+		data->size = 1;
+}
+
 char	parse_flags(const char *s, int *i, t_data *data)
 {
 	int	nb;
 
-	data->options = s;
 	parse_options(s, i, data);
 	if (s[*i] >= '1' && s[*i] <= '9')
 	{
@@ -51,35 +75,23 @@ char	parse_flags(const char *s, int *i, t_data *data)
 	if (s[*i] == '.')
 	{
 		(*i)++;
-		nb = pf_atoi(s + *i);
-		data->prec = nb;
-		if (nb == 0)
-			(*i)++;
-		while (nb != 0)
+		if (s[*i] >= '0' && s[*i] <= '9')
 		{
-			(*i)++;
-			nb /= 10;
+			nb = pf_atoi(s + *i);
+			data->prec = nb;
+			if (nb == 0)
+				(*i)++;
+			while (nb != 0)
+			{
+				(*i)++;
+				nb /= 10;
+			}
 		}
+		else
+			data->prec = 0;
 	}
-	if (s[*i] == 'l')
-	{
-		data->size = 8;
-		(*i)++;
-		if (s[*i] == 'l')
-			(*i)++;
-	}
-	else if (s[*i] == 'h')
-	{
-		data->size = 2;
-		(*i)++;
-		if (s[*i] == 'h')
-		{
-			data->size = 1;
-			(*i)++;
-		}
-	}
-	else
-		data->size = 4;
+	parse_size(s, i, data);
+	parse_options(s, i, data);
 	if (s[*i] != 'd' && s[*i] != 'i' && s[*i] != 'o' && s[*i] != 'u'
 			&& s[*i] != 'x' && s[*i] != 'X' && s[*i] != 'f' && s[*i] != 'c'
 			&& s[*i] != 's' && s[*i] != 'p' && s[*i] != '%' && s[*i] != 'O'
