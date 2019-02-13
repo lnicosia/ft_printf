@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 14:23:32 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 14:39:18 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	sizes(void)
 
 int		main(void)
 {
+	//ft_printf("%f\n", 1.52);
 	ft_printf("@main_ftprintf: %####0000 33..1..#00d\\n\n", 256);
 	printf("@main_ftprintf: %####0000 33..1..#00d\\n\n", 256);
 	/*long a = 0;

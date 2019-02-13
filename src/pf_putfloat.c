@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include "ft_printf.h"
 
@@ -30,6 +31,22 @@ static int	power_over_nine_thousand(long nb, int power)
 	return (nb);
 }
 
+char		*pf_strnew(int size)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (!(str = (char *)malloc(sizeof(*str) * (size + 1))))
+		return (NULL);
+	while (i < size)
+	{
+		str[i] = '\0';
+		i++;
+	}
+	return (str);
+}
+
 void	rev_str(char *str, int len) 
 { 
 	int		i;
@@ -46,12 +63,15 @@ void	rev_str(char *str, int len)
 	} 
 }
 
-int		pf_itoa(long nb, int precision)
+int		pf_itoa(t_data *data, long nb, int precision)
 {
 	int		i;
 	int		size;
 	char	*str;
 
+	size = get_size(nb);
+	if (!(str = pf_strnew(size)))
+		return (-1);
 	i = 0;
 	while (nb)
 	{
@@ -62,10 +82,12 @@ int		pf_itoa(long nb, int precision)
 		str[i++] = '0';
 	rev_str(str, i);
 	str[i] = '\0';
+	fill_buffer(data, str, size);
+	free(str);
 	return (i);
 }
 
-void	pf_ftoa(t_data *data)
+void	pf_putfloat(t_data *data)
 {
 	int			i;
 	long		i_part;
@@ -75,16 +97,16 @@ void	pf_ftoa(t_data *data)
 	nb = va_arg(data->ap, long double);
 	i_part = (long)nb;
 	f_part = nb - (double)i_part;
-	i = pf_itoa(i_part, 0);
+	i = pf_itoa(data, i_part, 0);
 	if (data->prec != 0)
 	{
 		fill_buffer(data, ".", 1);
 		f_part = f_part * power_over_nine_thousand(10, data->prec);
 		printf("f_part %d\n", (int)(f_part + 0.5));
-		pf_itoa((int)f_part, data->prec);
+		pf_itoa(data, (int)f_part, data->prec);
 	}
 }
-
+/*
 int	main(void)
 {
 	char *str;
@@ -110,4 +132,4 @@ int	main(void)
 //	pf_ftoa(15.36, str, 2);
 //	printf("|%s|\n", str);
 	return (0);
-}
+}*/

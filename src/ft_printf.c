@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 14:08:51 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 14:34:32 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void		init_put(void)
 	g_printers['s'] = &pf_putstr;
 	g_printers['p'] = &pf_putaddr;
 	g_printers['%'] = &pf_putpercent;
+	g_printers['f'] = &pf_putfloat;
 }
 
 void		fill_buffer(t_data *data, const char *s, int size)

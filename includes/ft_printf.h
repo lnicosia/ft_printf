@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 11:50:16 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/13 14:35:07 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_data
 
 int		ft_printf(const char *restrict format, ...);
 void	pf_putchar(t_data *data);
+void	pf_putfloat(t_data *data);
 void	pf_putnbr(t_data *data);
 void	pf_putunbr(t_data *data);
 void	pf_putstr(t_data *data);
