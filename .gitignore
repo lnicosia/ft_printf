@@ -2,7 +2,7 @@ obj
 obj/*
 *.swp
 a.out
-*.a
+libftprintf.a
 *.o
 ./ft_printf
 ft_printf
