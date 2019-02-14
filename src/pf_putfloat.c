@@ -86,6 +86,7 @@ int		pf_itoa(t_data *data, long nb, int precision)
 		str[i++] = (nb % 10) + '0';
 		nb = nb / 10;
 	}
+	printf("i: %d\n", i);
 	while (i < precision)
 		str[i++] = '0';
 //	printf("str = |%s|\n", str);
@@ -114,9 +115,12 @@ void	pf_putfloat(t_data *data)
 	if (data->prec != 0)
 	{
 		fill_buffer(data, ".", 1);
+		printf("\nf_part = %f\n", f_part);
 		f_part = f_part * power_over_nine_thousand(10, data->prec) + 0.5;
-	//	printf("f_part %ld\n", (long)(f_part + 0.5));
-		pf_itoa(data, (long)f_part, data->prec);
+		i = pf_itoa(data, (long)f_part, data->prec);
+		printf("i = %d\n", i);
+		while (i++ < data->prec)
+			fill_buffer(data, "0", 1);
 	}
 }
 /*
