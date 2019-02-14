@@ -66,7 +66,6 @@ void	rev_str(char *str, int len)
 int		pf_ftoa(t_data *data, long nb, int precision)
 {
 	int		i;
-	int		size;
 	char	*str;
 
 	if (!(str = pf_strnew(precision)))
