@@ -17,9 +17,9 @@ static int	get_size(long nbr)
 	return (size);
 }
 
-static int	power_over_nine_thousand(long nb, int power)
+static long	power(long nb, int power)
 {
-	int tmp;
+	long tmp;
 
 	tmp = nb;
 	if (power == 0)
@@ -53,8 +53,6 @@ void	rev_str(char *str, int len)
 	char	tmp;
 
 	i = 0; 
-//	printf("%d\n", len);
-//	printf("avant rev_str = |%s|\n", str);
 	while (i < len)
 	{ 
 		tmp = str[i]; 
@@ -63,10 +61,34 @@ void	rev_str(char *str, int len)
 		i++;
 		len--; 
 	} 
-//	printf("apres rev_str = |%s|\n", str);
 }
 
-int		pf_itoa(t_data *data, long nb, int precision)
+int		pf_ftoa(t_data *data, long nb, int precision)
+{
+	int		i;
+	int		size;
+	char	*str;
+
+	if (!(str = pf_strnew(precision)))
+		return (-1);
+	i = 0;
+	while (nb > 0)
+	{
+		str[i] = (nb % 10) + '0';
+		nb = nb / 10;
+		i++;
+	}
+	while (i < precision)
+		str[i++] = '0';
+	rev_str(str, i);
+	str[i++] = '\0';
+	fill_buffer(data, str, precision);
+	free(str);
+	str = NULL;
+	return (i);
+}
+
+int		pf_itoa(t_data *data, long nb)
 {
 	int		i;
 	int		size;
@@ -78,20 +100,19 @@ int		pf_itoa(t_data *data, long nb, int precision)
 		fill_buffer(data, "0", 1);
 		return (1);
 	}
+	if (nb > 0)
+		nb = -nb;
 	if (!(str = pf_strnew(size)))
 		return (-1);
 	i = 0;
-	while (nb)
+	while (nb < 0)
 	{
-		str[i++] = (nb % 10) + '0';
+		str[i] = '0' - (nb % 10);
 		nb = nb / 10;
+		i++;
 	}
-	printf("i: %d\n", i);
-	while (i < precision)
-		str[i++] = '0';
-//	printf("str = |%s|\n", str);
 	rev_str(str, i);
-	str[++i] = '\0';
+	str[i++] = '\0';
 	fill_buffer(data, str, size);
 	free(str);
 	str = NULL;
@@ -107,18 +128,22 @@ void	pf_putfloat(t_data *data)
 
 	if (data->prec == -1)
 		data->prec = 6;
+	printf("%d\n", data->prec);
 	nb = va_arg(data->ap, double);
+	if (nb < 0)
+		fill_buffer(data, "-", 1);
 	i_part = (long)nb;
-	//printf("%f\n", nb);
 	f_part = nb - (double)i_part;
-	i = pf_itoa(data, i_part, 0);
+	printf("f_part%f\n", f_part);
+	i = pf_itoa(data, i_part);
 	if (data->prec != 0)
 	{
 		fill_buffer(data, ".", 1);
-		printf("\nf_part = %f\n", f_part);
-		f_part = f_part * power_over_nine_thousand(10, data->prec) + 0.5;
-		i = pf_itoa(data, (long)f_part, data->prec);
-		printf("i = %d\n", i);
+		f_part = (f_part < 0) ? -f_part : f_part;
+		printf("f_part%f\n", f_part);
+		f_part = f_part * power(10, data->prec) + 0.5;
+		printf("f_part%f\n", f_part);
+		i = pf_ftoa(data, (long)f_part, data->prec);
 		while (i++ < data->prec)
 			fill_buffer(data, "0", 1);
 	}
