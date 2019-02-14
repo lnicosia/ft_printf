@@ -6,7 +6,7 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2019/02/13 14:48:07 by lnicosia         ###   ########.fr        #
+#    Updated: 2019/02/14 17:29:41 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC = $(addprefix $(SRC_DIR)/, $(SRC_RAW))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_RAW:.c=.o))
 INCLUDES = $(addprefix $(INCLUDES_DIR)/, $(HEADERS))
 
-CFLAGS = -g3 -O3 -Wall -I $(INCLUDES_DIR) \
+CFLAGS = -g3 -O3 -Wall -I $(INCLUDES_DIR)
 
 RED := "\033[0;31m"
 GREEN := "\033[0;32m"

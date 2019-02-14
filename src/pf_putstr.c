@@ -6,22 +6,26 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 16:21:04 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/14 17:32:34 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "put_padding.h"
 
-int			ft_strlen(const char *s)
+static int	ft_strlen(const char *s)
 {
 	int	i;
 
 	i = 0;
 	if (!s)
 		return (0);
+	//printf("str not null\n");
 	while (s[i])
+	{
+		//printf("i = %d\n", i);
 		i++;
+	}
 	return (i);
 }
 
@@ -35,7 +39,7 @@ static void	set_padding(t_data *data, const char *s)
 		data->padding.zeros = data->l_min - data->padding.size;
 	data->padding.right_spaces = 0;
 	data->padding.left_spaces = 0;
-	if (data->left && data->l_min > 1)
+	if (data->left)
 		data->padding.right_spaces = data->l_min - data->padding.zeros
 			- data->padding.size;
 	else if (data->l_min > 1)
@@ -47,15 +51,13 @@ void	pf_putstr(t_data *data)
 {
 	const char	*s;
 
-	s = va_arg(data->ap, char *);
-	if (s == NULL && data->l_min == 0)
-	{
-		fill_buffer(data, "(null)", 6);
-		return ;
-	}
+	s = va_arg(data->ap, const char *);
+	//printf("s = %ls\n", s);
+	if (s == NULL)
+		s = (const char *)"(null)";
 	set_padding(data, s);
 	put_left_spaces(data);
 	put_zeros(data);
-	fill_buffer(data, s, data->padding.size);
+	fill_buffer(data, (const char *)s, data->padding.size);
 	put_right_spaces(data);
 }

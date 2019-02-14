@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/14 15:22:33 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/14 17:32:45 by lnicosia         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,6 +28,45 @@ void	sizes(void)
 
 int		main(void)
 {
+	/*ft_printf("|%d|\n", 0.123);
+	printf("|%d|\n", 0.123);*/
+
+	/*ft_printf("|%d|\n", 5, 5);
+	printf("|%d|\n\n", 5, 5);
+
+	ft_printf("|%d%d|\n", 5);
+	printf("|%d%d|\n\n", 5);*/
+
+	/*ft_printf("test %-10.2ls!!\n", L"〻");
+	printf("test %-10.2ls!!\n", L"〻");*/
+
+	ft_printf("test %-7C %007d%-10.2ls!!", 0xd777, 0x45, L"〻");
+	printf("test %-7C %007d%-10.2ls!!", 0xd777, 0x45, L"〻");
+
+	/*ft_printf("|u{%4.2s}s {%-1.s} {%---5.3s}|\n", "coco", NULL, "yooo");
+	printf("|u{%4.2s}s {%-1.s} {%---5.3s}|\n\n", "coco", NULL, "yooo");
+
+	ft_printf("|%-1.1s|\n", NULL);
+	printf("|%-1.1s|\n\n", NULL);
+
+	ft_printf("|%-1.s|\n", NULL);
+	printf("|%-1.s|\n\n", NULL);
+
+	ft_printf("|%-2.s|\n", NULL);
+	printf("|%-2.s|\n\n", NULL);
+
+	ft_printf("|%10s|\n", NULL);
+	printf("|%10s|\n\n", NULL);
+
+	ft_printf("|%010s|\n", NULL);
+	printf("|%010s|\n\n", NULL);
+
+	ft_printf("|%0.s|\n", "hi");
+	printf("|%0.s|\n\n", "hi");
+
+	ft_printf("|%---12s|\n", 0);
+	printf("|%---12s|\n\n", 0);*/
+
 	/*ft_printf("{%#5x}\n", 1);
 	printf("{%#5x}\n\n", 1);
 
@@ -79,7 +118,7 @@ int		main(void)
 	ft_printf("{%5.5x}\n", 0);
 	printf("{%5.5x}\n\n", 0);*/
 
-	ft_printf("{%#5o}\n", 1);
+	/*ft_printf("{%#5o}\n", 1);
 	printf("{%#5o}\n\n", 1);
 
 	ft_printf("{%#5o}\n", 0);
@@ -134,7 +173,7 @@ int		main(void)
 	printf("{%.5o}\n\n", 0);
 
 	ft_printf("{%5.5o}\n", 0);
-	printf("{%5.5o}\n\n", 0);
+	printf("{%5.5o}\n\n", 0);*/
 
 	/*ft_printf("{%05.%}\n", 0);
 	printf("{%05.%}\n\n", 0);
