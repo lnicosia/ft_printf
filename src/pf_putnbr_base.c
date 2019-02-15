@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 22:33:02 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/14 15:23:05 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:06:27 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,26 @@ void					pf_putnbr_o(t_data *data)
 	put_zeros(data);
 	if (!(data->prec == 0 && nb == 0))
 		pf_putlong_base(nb, "01234567", data);
+	put_right_spaces(data);
+}
+
+void					pf_putnbr_b(t_data *data)
+{
+	unsigned long	nb;
+
+	nb = cast(data);
+	data->padding.size = 0;
+	if (data->sharp && (nb && (data->l_min != 0 && data->prec == -1)))
+		data->padding.size += 2;
+	set_zeros(data, nb, 2);
+	if (data->sharp && (nb && !(data->l_min != 0 && data->prec == -1)))
+		data->padding.size += 2;
+	set_spaces(data);
+	put_left_spaces(data);
+	if (data->sharp && nb)
+		fill_buffer(data, "0b", 2);
+	put_zeros(data);
+	if (nb != 0 || data->prec != 0)
+		pf_putlong_base(nb, "01", data);
 	put_right_spaces(data);
 }

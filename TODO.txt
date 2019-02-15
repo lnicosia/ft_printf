@@ -1,0 +1,5 @@
+errors
+("%d %d", 42)
+buffer reset + print a refaire
+si ret > intmax
+bonus: %d, couleurs, etc ... (z, j, %D, %U, %O, %C, %S)

@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/15 15:24:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:59:18 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void		init_put(void)
 	g_printers['D'] = &pf_putnbr;
 	g_printers['i'] = &pf_putnbr;
 	g_printers['o'] = &pf_putnbr_o;
+	g_printers['b'] = &pf_putnbr_b;
 	g_printers['O'] = &pf_putnbr_o;
 	g_printers['u'] = &pf_putunbr;
 	g_printers['U'] = &pf_putunbr;

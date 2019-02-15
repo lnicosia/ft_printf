@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/15 15:24:41 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:56:37 by lnicosia         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,8 +28,12 @@ void	sizes(void)
 
 int		main(void)
 {
-	ft_printf(NULL);
-	ft_printf(NULL, 123, 'A', 1235.123);
+	ft_printf("|%01.u|\n", 0);
+	printf("|%01.u|\n\n", 0);
+	//ft_printf("|%d||%d||%d|\n");
+
+	/*ft_printf(NULL);
+	ft_printf(NULL, 123, 'A', 1235.123);*/
 
 	/*ft_printf("|%f|\n", -12547.58);
 	printf("|%f|\n\n", -12547.58);*/
@@ -74,55 +78,55 @@ int		main(void)
 	printf("|%d%d|\n\n", 5);*/
 
 
-	/*ft_printf("{%#5x}\n", 1);
+	/*ft_printf("{%#5b}\n", 1);
 	printf("{%#5x}\n\n", 1);
 
-	ft_printf("{%#5x}\n", 0);
+	ft_printf("{%#5b}\n", 0);
 	printf("{%#5x}\n\n", 0);
 
-	ft_printf("{%5x}\n", 0);
+	ft_printf("{%5b}\n", 0);
 	printf("{%5x}\n\n", 0);
 
-	ft_printf("{%#.x, %#.0x}\n", 0, 0);
+	ft_printf("{%#.b, %#.0b}\n", 0, 0);
 	printf("{%#.x, %#.0x}\n\n", 0, 0);
 
-	ft_printf("{%.x, %.0x}\n", 0, 0);
+	ft_printf("{%.b, %.0b}\n", 0, 0);
 	printf("{%.x, %.0x}\n\n", 0, 0);
 
-	ft_printf("{%#.x, %#.0x}\n", 1, 1);
+	ft_printf("{%#.b, %#.0b}\n", 1, 1);
 	printf("{%#.x, %#.0x}\n\n", 1, 1);
 
-	ft_printf("{%.x, %.0x}\n", 1, 1);
+	ft_printf("{%.b, %.0b}\n", 1, 1);
 	printf("{%.x, %.0x}\n\n", 1, 1);
 
-	ft_printf("{%#05x, %#05x}\n", 1, 1);
+	ft_printf("{%#05b, %#05b}\n", 1, 1);
 	printf("{%#05x, %#05x}\n\n", 1, 1);
 
-	ft_printf("|%#7.5x|\n", 0xab);
+	ft_printf("|%#7.5b|\n", 0xab);
 	printf("|%#7.5x|\n\n", 0xab);
 
-	ft_printf("|%7.5x|\n", 0xab);
+	ft_printf("|%7.5b|\n", 0xab);
 	printf("|%7.5x|\n\n", 0xab);
 
-	ft_printf("{%#.5x}\n", 1);
+	ft_printf("{%#.5b}\n", 1);
 	printf("{%#.5x}\n\n", 1);
 
-	ft_printf("{%.5x}\n", 1);
+	ft_printf("{%.5b}\n", 1);
 	printf("{%.5x}\n\n", 1);
 
-	ft_printf("{%#.5x}\n", 0);
+	ft_printf("{%#.5b}\n", 0);
 	printf("{%#.5x}\n\n", 0);
 
-	ft_printf("{%.x}\n", 0);
+	ft_printf("{%.b}\n", 0);
 	printf("{%.x}\n\n", 0);
 
-	ft_printf("{%5.x}\n", 0);
+	ft_printf("{%5.b}\n", 0);
 	printf("{%5.x}\n\n", 0);
 
-	ft_printf("{%.5x}\n", 0);
+	ft_printf("{%.5b}\n", 0);
 	printf("{%.5x}\n\n", 0);
 
-	ft_printf("{%5.5x}\n", 0);
+	ft_printf("{%5.5b}\n", 0);
 	printf("{%5.5x}\n\n", 0);*/
 
 	/*ft_printf("{%#5o}\n", 1);
