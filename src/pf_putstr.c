@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/15 12:14:04 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:31:18 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,8 @@ static int	ft_strlen(char *s)
 	i = 0;
 	if (!s)
 		return (0);
-	//printf("str not null\n");
 	while (s[i])
-	{
-		//printf("i = %d\n", i);
 		i++;
-	}
 	return (i);
 }
 
@@ -42,7 +38,7 @@ static void	set_padding(t_data *data, char *s)
 	if (data->left)
 		data->padding.right_spaces = data->l_min - data->padding.zeros
 			- data->padding.size;
-	else if (data->l_min > 1)
+	else
 		data->padding.left_spaces = data->l_min - data->padding.zeros
 			- data->padding.size;
 }
@@ -67,6 +63,6 @@ void	pf_putstr(t_data *data)
 	set_padding(data, s);
 	put_left_spaces(data);
 	put_zeros(data);
-	fill_buffer(data, (const char *)s, data->padding.size);
+	fill_buffer(data, s, data->padding.size);
 	put_right_spaces(data);
 }

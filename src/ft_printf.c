@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/15 12:25:10 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/15 15:24:00 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int			ft_printf(const char *restrict format, ...)
 	int		c;
 	t_data	data;
 
+	if (!format)
+		return (-1);
 	i = 0;
 	data.i = 0;
 	data.ret = 0;

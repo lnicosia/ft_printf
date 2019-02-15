@@ -127,21 +127,21 @@ void	pf_putfloat(t_data *data)
 
 	if (data->prec == -1)
 		data->prec = 6;
-	printf("%d\n", data->prec);
+	//printf("prec = %d\n", data->prec);
 	nb = va_arg(data->ap, double);
 	if (nb < 0)
 		fill_buffer(data, "-", 1);
 	i_part = (long)nb;
 	f_part = nb - (double)i_part;
-	printf("f_part%f\n", f_part);
+	//printf("f_part%f\n", f_part);
 	i = pf_itoa(data, i_part);
 	if (data->prec != 0)
 	{
 		fill_buffer(data, ".", 1);
 		f_part = (f_part < 0) ? -f_part : f_part;
-		printf("f_part%f\n", f_part);
+		//printf("f_part%f\n", f_part);
 		f_part = f_part * power(10, data->prec) + 0.5;
-		printf("f_part%f\n", f_part);
+		//printf("f_part%f\n", f_part);
 		i = pf_ftoa(data, (long)f_part, data->prec);
 		while (i++ < data->prec)
 			fill_buffer(data, "0", 1);
