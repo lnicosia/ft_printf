@@ -6,14 +6,14 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/14 17:32:34 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/15 12:14:04 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "put_padding.h"
 
-static int	ft_strlen(const char *s)
+static int	ft_strlen(char *s)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static int	ft_strlen(const char *s)
 	return (i);
 }
 
-static void	set_padding(t_data *data, const char *s)
+static void	set_padding(t_data *data, char *s)
 {
 	data->padding.size = ft_strlen(s);
 	data->padding.zeros = 0;
@@ -47,14 +47,23 @@ static void	set_padding(t_data *data, const char *s)
 			- data->padding.size;
 }
 
+static char	*cast(t_data *data)
+{
+	char	*s;
+	int	i;
+
+	i = 0;
+	s = va_arg(data->ap, char *);
+	return (s);
+}
+
 void	pf_putstr(t_data *data)
 {
-	const char	*s;
+	char	*s;
 
-	s = va_arg(data->ap, const char *);
-	//printf("s = %ls\n", s);
+	s = cast(data);
 	if (s == NULL)
-		s = (const char *)"(null)";
+		s = "(null)";
 	set_padding(data, s);
 	put_left_spaces(data);
 	put_zeros(data);

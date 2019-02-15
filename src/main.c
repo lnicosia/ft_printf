@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/14 17:32:45 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/15 12:24:29 by lnicosia         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,6 +28,9 @@ void	sizes(void)
 
 int		main(void)
 {
+	ft_printf("{%f}{%F}\n", 1.42, 1.42);
+	printf("{%f}{%F}\n\n", 1.42, 1.42);
+
 	/*ft_printf("|%d|\n", 0.123);
 	printf("|%d|\n", 0.123);*/
 
@@ -39,9 +42,6 @@ int		main(void)
 
 	/*ft_printf("test %-10.2ls!!\n", L"〻");
 	printf("test %-10.2ls!!\n", L"〻");*/
-
-	ft_printf("test %-7C %007d%-10.2ls!!", 0xd777, 0x45, L"〻");
-	printf("test %-7C %007d%-10.2ls!!", 0xd777, 0x45, L"〻");
 
 	/*ft_printf("|u{%4.2s}s {%-1.s} {%---5.3s}|\n", "coco", NULL, "yooo");
 	printf("|u{%4.2s}s {%-1.s} {%---5.3s}|\n\n", "coco", NULL, "yooo");
