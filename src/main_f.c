@@ -6,7 +6,7 @@
 /*   fy: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 fy lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/18 17:23:48 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/18 18:53:47 by lnicosia         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 fy lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,117 +28,79 @@ void	sizes(void)
 
 int		main(void)
 {
-	double		nb;
+	ft_printf("|%10lf|\n", 0.0);
+	printf("|%10lf|\n\n", 0.0);
 
-	nb = 1.0/0.0;
-	ft_printf("|%f|\n", nb);
-	printf("|%f|\n\n", nb);
-	ft_printf("|%12f|\n", nb);
-	printf("|%12f|\n\n", nb);
-	ft_printf("|%-12f|\n", nb);
-	printf("|%-12f|\n\n", nb);
-	ft_printf("|%5.f|\n", nb);
-	printf("|%5.f|\n\n", nb);
-
-	nb = 1.0/0.0;
-	ft_printf("|% f|\n", nb);
-	printf("|% f|\n\n", nb);
-	ft_printf("|% 12f|\n", nb);
-	printf("|% 12f|\n\n", nb);
-	ft_printf("|%- 12f|\n", nb);
-	printf("|%- 12f|\n\n", nb);
-	ft_printf("|% 5.9f|\n", nb);
-	printf("|% 5.9f|\n\n", nb);
-
-	nb = -1.0/0.0;
-	ft_printf("|%f|\n", nb);
-	printf("|%f|\n\n", nb);
-	ft_printf("|%12f|\n", nb);
-	printf("|%12f|\n\n", nb);
-	ft_printf("|%-12f|\n", nb);
-	printf("|%-12f|\n\n", nb);
-	ft_printf("|%5.9f|\n", nb);
-	printf("|%5.9f|\n\n", nb);
-
-	nb = 0.0/0.0;
-	ft_printf("|%f|\n", nb);
-	printf("|%f|\n\n", nb);
-	ft_printf("|%12f|\n", nb);
-	printf("|%12f|\n\n", nb);
-	ft_printf("|%-12f|\n", nb);
-	printf("|%-12f|\n\n", nb);
-	ft_printf("|%5.9f|\n", nb);
-	printf("|%5.9f|\n\n", nb);
 	/*double		nb;
-	  nb = -0.0;
-	  ft_printf("|% f|\n", nb);
-	  printf("|% f|\n", nb);
-	  ft_printf("|%+f|\n", nb);
-	  printf("|%+f|\n", nb);
-	  ft_printf("|%#f|\n", nb);
-	  printf("|%#f|\n", nb);
-	  ft_printf("|%.2f|\n", nb);
-	  printf("|%.2f|\n", nb);
-	  ft_printf("|%.14f|\n", nb);
-	  printf("|%.14f|\n", nb);
-	  ft_printf("|%#.0f|\n", nb);
-	  printf("|%#.0f|\n", nb);
-	  ft_printf("|% .5f|\n", nb);
-	  printf("|% .5f|\n", nb);
-	  ft_printf("|%# .0f|\n", nb);
-	  printf("|%# .0f|\n", nb);
-	  ft_printf("|% #.0f|\n", nb);
-	  printf("|% #.0f|\n", nb);
-	  ft_printf("|%+.5f|\n", nb);
-	  printf("|%+.5f|\n", nb);
-	  ft_printf("|%+.0f|\n", nb);
-	  printf("|%+.0f|\n", nb);
-	  ft_printf("|%#+.0f|\n", nb);
-	  printf("|%#+.0f|\n", nb);
-	  ft_printf("|%0.5f|\n", nb);
-	  printf("|%0.5f|\n", nb);
-	  ft_printf("|%-.5f|\n", nb);
-	  printf("|%-.5f|\n", nb);
-	  ft_printf("|%5f|\n", nb);
-	  printf("|%5f|\n", nb);
-	  ft_printf("|% 5f|\n", nb);
-	  printf("|% 5f|\n", nb);
-	  ft_printf("|%+5f|\n", nb);
-	  printf("|%+5f|\n", nb);
-	  ft_printf("|%# 5f|\n", nb);
-	  printf("|%# 5f|\n", nb);
-	  ft_printf("|%#+5f|\n", nb);
-	  printf("|%#+5f|\n", nb);
-	  ft_printf("|%-5f|\n", nb);
-	  printf("|%-5f|\n", nb);
-	  ft_printf("|%05f|\n", nb);
-	  printf("|%05f|\n", nb);
-	  ft_printf("|%+05f|\n", nb);
-	  printf("|%+05f|\n", nb);
-	  ft_printf("|%0+5f|\n", nb);
-	  printf("|%0+5f|\n", nb);
-	  ft_printf("|%05.3f|\n", nb);
-	  printf("|%05.3f|\n", nb);
-	  ft_printf("|%0#5.0f|\n", nb);
-	  printf("|%0#5.0f|\n", nb);
-	  ft_printf("|%-5.3f|\n", nb);
-	  printf("|%-5.3f|\n", nb);
-	  ft_printf("|%-#5.0f|\n", nb);
-	  printf("|%-#5.0f|\n", nb);
-	  ft_printf("|%+05.3f|\n", nb);
-	  printf("|%+05.3f|\n", nb);
-	  ft_printf("|%0+#5.0f|\n", nb);
-	  printf("|%0+#5.0f|\n", nb);
-	  ft_printf("|%0 5.3f|\n", nb);
-	  printf("|%0 5.3f|\n", nb);
-	  ft_printf("|% 05.3f|\n", nb);
-	  printf("|% 05.3f|\n", nb);
-	  ft_printf("|%#0 5.0f|\n", nb);
-	  printf("|%#0 5.0f|\n", nb);
-	  ft_printf("|%-+5.3f|\n", nb);
-	  printf("|%-+5.3f|\n", nb);
-	  ft_printf("|%-#+5.0f|\n", nb);
-	  printf("|%-#+5.0f|\n", nb);*/
+	nb = -12547.58;
+	ft_printf("|% f|\n", nb);
+	printf("|% f|\n", nb);
+	ft_printf("|%+f|\n", nb);
+	printf("|%+f|\n", nb);
+	ft_printf("|%#f|\n", nb);
+	printf("|%#f|\n", nb);
+	ft_printf("|%.2f|\n", nb);
+	printf("|%.2f|\n", nb);
+	ft_printf("|%.14f|\n", nb);
+	printf("|%.14f|\n", nb);
+	ft_printf("|%#.0f|\n", nb);
+	printf("|%#.0f|\n", nb);
+	ft_printf("|% .5f|\n", nb);
+	printf("|% .5f|\n", nb);
+	ft_printf("|%# .0f|\n", nb);
+	printf("|%# .0f|\n", nb);
+	ft_printf("|% #.0f|\n", nb);
+	printf("|% #.0f|\n", nb);
+	ft_printf("|%+.5f|\n", nb);
+	printf("|%+.5f|\n", nb);
+	ft_printf("|%+.0f|\n", nb);
+	printf("|%+.0f|\n", nb);
+	ft_printf("|%#+.0f|\n", nb);
+	printf("|%#+.0f|\n", nb);
+	ft_printf("|%0.5f|\n", nb);
+	printf("|%0.5f|\n", nb);
+	ft_printf("|%-.5f|\n", nb);
+	printf("|%-.5f|\n", nb);
+	ft_printf("|%5f|\n", nb);
+	printf("|%5f|\n", nb);
+	ft_printf("|% 5f|\n", nb);
+	printf("|% 5f|\n", nb);
+	ft_printf("|%+5f|\n", nb);
+	printf("|%+5f|\n", nb);
+	ft_printf("|%# 5f|\n", nb);
+	printf("|%# 5f|\n", nb);
+	ft_printf("|%#+5f|\n", nb);
+	printf("|%#+5f|\n", nb);
+	ft_printf("|%-5f|\n", nb);
+	printf("|%-5f|\n", nb);
+	ft_printf("|%05f|\n", nb);
+	printf("|%05f|\n", nb);
+	ft_printf("|%+05f|\n", nb);
+	printf("|%+05f|\n", nb);
+	ft_printf("|%0+5f|\n", nb);
+	printf("|%0+5f|\n", nb);
+	ft_printf("|%05.3f|\n", nb);
+	printf("|%05.3f|\n", nb);
+	ft_printf("|%0#5.0f|\n", nb);
+	printf("|%0#5.0f|\n", nb);
+	ft_printf("|%-5.3f|\n", nb);
+	printf("|%-5.3f|\n", nb);
+	ft_printf("|%-#5.0f|\n", nb);
+	printf("|%-#5.0f|\n", nb);
+	ft_printf("|%+05.3f|\n", nb);
+	printf("|%+05.3f|\n", nb);
+	ft_printf("|%0+#5.0f|\n", nb);
+	printf("|%0+#5.0f|\n", nb);
+	ft_printf("|%0 5.3f|\n", nb);
+	printf("|%0 5.3f|\n", nb);
+	ft_printf("|% 05.3f|\n", nb);
+	printf("|% 05.3f|\n", nb);
+	ft_printf("|%#0 5.0f|\n", nb);
+	printf("|%#0 5.0f|\n", nb);
+	ft_printf("|%-+5.3f|\n", nb);
+	printf("|%-+5.3f|\n", nb);
+	ft_printf("|%#+5.0f|\n", nb);
+	printf("|%#+5.0f|\n", nb);*/
 
 	/*ft_printf("{% 5.f}\n", 137.0);
 	  printf("{% 5.f}\n\n", 137.0);

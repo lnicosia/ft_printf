@@ -1,3 +1,4 @@
+l_min for %f
 errors
 ("%d %d", 42)
 buffer reset + print a refaire
