@@ -6,7 +6,7 @@
 /*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
-/*   Updated: 2019/02/18 15:50:23 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/18 17:19:03 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	get_size(long nbr)
 	int size;
 
 	size = 0;
-	if (nbr <= 0)
+	if (nbr == 0)
 		size++;
 	while (nbr != 0)
 	{
@@ -133,37 +133,40 @@ int		pf_itoa(t_data *data, long nb)
 
 static void	set_padding(t_data *data, long i_part)
 {
-	int	size;
-
-	size = 0;
 	if (i_part == 0)
-		size++;
+		data->padding.size++;
 	if (data->sharp)
-		size++;
+		data->padding.size++;
 	if (data->plus || data->space || i_part < 0)
 	{
 		data->padding.sign = 1;
-		size++;
+		data->padding.size++;
 	}
 	while (i_part != 0)
 	{
-		size++;
+		data->padding.size++;
 		i_part /= 10;
 	}
 	data->padding.left_spaces = 0;
 	data->padding.right_spaces = 0;
-	if (data->l_min > size && data->prec == 0)
+	if (data->l_min > data->padding.size && data->prec == 0)
 	{
 		if (!data->left)
 		{
 			if (data->zero)
-				data->padding.zeros = data->l_min - size;
+				data->padding.zeros = data->l_min - data->padding.size;
 			else
-				data->padding.left_spaces = data->l_min - size;
+				data->padding.left_spaces = data->l_min - data->padding.size;
 		}
 		else
-			data->padding.right_spaces = data->l_min - size;
+			data->padding.right_spaces = data->l_min - data->padding.size;
 	}
+}
+
+static void	inf(t_data *data, long nb)
+{
+	(void)data;
+	(void)nb;
 }
 
 void	pf_putfloat(t_data *data)
@@ -174,11 +177,19 @@ void	pf_putfloat(t_data *data)
 	double			f_part;
 
 	nb = va_arg(data->ap, double);
-	//printf("nb = %lf\n", nb);
+	printf("nb = %Lf\n", nb);
+	/*if (nb == 1.0 / 0.0 || nb == -1.0 / 0.0 || nb == 0.0 / 0.0)
+	{
+		data->padding.size = (nb == -1.0 / 0.0) ? 4 : 3;
+		inf(data, nb);
+		return ;
+	}
+	else*/
+		data->padding.size = 0;
 	if (data->prec == -1)
 		data->prec = 6;
 	if (data->prec == 0)
-		nb += (nb < 0) ? -0.5 : 0.5;
+		nb += (nb < 0) ? -0.4999999 : 0.4999999;
 	//printf("prec = %d\n", data->prec);
 	i_part = (long)nb;
 	f_part = nb - (double)i_part;

@@ -6,7 +6,7 @@
 /*   fy: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 fy lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/18 15:26:31 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/18 17:23:48 by lnicosia         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 fy lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -29,111 +29,152 @@ void	sizes(void)
 int		main(void)
 {
 	double		nb;
-	nb = -12547.58;
-	ft_printf("space:|% f|\n", nb);
-	printf("space:|% f|\n", nb);
-	ft_printf("plus:|%+f|\n", nb);
-	printf("plus:|%+f|\n", nb);
-	ft_printf("hash:|%#f|\n", nb);
-	printf("hash:|%#f|\n", nb);
-	ft_printf("precision:|%.2f|\n", nb);
-	printf("precision:|%.2f|\n", nb);
-	ft_printf("big prec:|%.14f|\n", nb);
-	printf("big prec:|%.14f|\n", nb);
-	ft_printf("precision + hash:|%#.0f|\n", nb);
-	printf("precision + hash:|%#.0f|\n", nb);
-	ft_printf("space + prec:|% .5f|\n", nb);
-	printf("space + prec:|% .5f|\n", nb);
-	ft_printf("space + prec + hash:|%# .0f|\n", nb);
-	printf("space + prec + hash:|%# .0f|\n", nb);
-	ft_printf("space + prec + hash:|% #.0f|\n", nb);
-	printf("space + prec + hash:|% #.0f|\n", nb);
-	ft_printf("Plus + prec / grande:|%+.5f|\n", nb);
-	printf("Plus + prec / grande:|%+.5f|\n", nb);
-	ft_printf("Plus + prec / petite:|%+.0f|\n", nb);
-	printf("Plus + prec / petite:|%+.0f|\n", nb);
-	ft_printf("Plus + prec + hash:|%#+.0f|\n", nb);
-	printf("Plus + prec + hash:|%#+.0f|\n", nb);
-	ft_printf("Prec + 0:|%0.5f|\n", nb);
-	printf("Prec + 0:|%0.5f|\n", nb);
-	ft_printf("Prec + minus:|%-.5f|\n", nb);
-	printf("Prec + minus:|%-.5f|\n", nb);
-	ft_printf("size:|%5f|\n", nb);
-	printf("size:|%5f|\n", nb);
-	ft_printf("size + space:|% 5f|\n", nb);
-	printf("size + space:|% 5f|\n", nb);
-	ft_printf("size + plus:|%+5f|\n", nb);
-	printf("size + plus:|%+5f|\n", nb);
-	ft_printf("size + space:|%# 5f|\n", nb);
-	printf("size + space:|%# 5f|\n", nb);
-	ft_printf("size + plus:|%#+5f|\n", nb);
-	printf("size + plus:|%#+5f|\n", nb);
-	ft_printf("size + minus:|%-5f|\n", nb);
-	printf("size + minus:|%-5f|\n", nb);
-	ft_printf("size + 0:|%05f|\n", nb);
-	printf("size + 0:|%05f|\n", nb);
-	ft_printf("size + 0 + plus:|%+05f|\n", nb);
-	printf("size + 0 + plus:|%+05f|\n", nb);
-	ft_printf("size + 0 + plus:|%0+5f|\n", nb);
-	printf("size + 0 + plus:|%0+5f|\n", nb);
-	ft_printf("size + 0 + prec:|%05.3f|\n", nb);
-	printf("size + 0 + prec:|%05.3f|\n", nb);
-	ft_printf("size + 0 + prec + hash:|%0#5.0f|\n", nb);
-	printf("size + 0 + prec + hash:|%0#5.0f|\n", nb);
-	ft_printf("size + minus + prec:|%-5.3f|\n", nb);
-	printf("size + minus + prec:|%-5.3f|\n", nb);
-	ft_printf("size + minus + prec + hash:|%-#5.0f|\n", nb);
-	printf("size + minus + prec + hash:|%-#5.0f|\n", nb);
-	ft_printf("size + plus + 0 + prec:|%+05.3f|\n", nb);
-	printf("size + plus + 0 + prec:|%+05.3f|\n", nb);
-	ft_printf("size + plus + 0 + prec + hash:|%0+#5.0f|\n", nb);
-	printf("size + plus + 0 + prec + hash:|%0+#5.0f|\n", nb);
-	ft_printf("size + espace + zero + prec:|%0 5.3f|\n", nb);
-	printf("size + espace + zero + prec:|%0 5.3f|\n", nb);
-	ft_printf("size + espace + zero + prec:|% 05.3f|\n", nb);
-	printf("size + espace + zero + prec:|% 05.3f|\n", nb);
-	ft_printf("size + espace + zero + prec + hash:|%#0 5.0f|\n", nb);
-	printf("size + espace + zero + prec + hash:|%#0 5.0f|\n", nb);
-	ft_printf("size + minus + plus + prec:|%-+5.3f|\n", nb);
-	printf("size + minus + plus + prec:|%-+5.3f|\n", nb);
-	ft_printf("size + minus + plus + prec + hash:|%-#+5.0f|\n", nb);
-	printf("size + minus + plus + prec + hash:|%-#+5.0f|\n", nb);
-	
+
+	nb = 1.0/0.0;
+	ft_printf("|%f|\n", nb);
+	printf("|%f|\n\n", nb);
+	ft_printf("|%12f|\n", nb);
+	printf("|%12f|\n\n", nb);
+	ft_printf("|%-12f|\n", nb);
+	printf("|%-12f|\n\n", nb);
+	ft_printf("|%5.f|\n", nb);
+	printf("|%5.f|\n\n", nb);
+
+	nb = 1.0/0.0;
+	ft_printf("|% f|\n", nb);
+	printf("|% f|\n\n", nb);
+	ft_printf("|% 12f|\n", nb);
+	printf("|% 12f|\n\n", nb);
+	ft_printf("|%- 12f|\n", nb);
+	printf("|%- 12f|\n\n", nb);
+	ft_printf("|% 5.9f|\n", nb);
+	printf("|% 5.9f|\n\n", nb);
+
+	nb = -1.0/0.0;
+	ft_printf("|%f|\n", nb);
+	printf("|%f|\n\n", nb);
+	ft_printf("|%12f|\n", nb);
+	printf("|%12f|\n\n", nb);
+	ft_printf("|%-12f|\n", nb);
+	printf("|%-12f|\n\n", nb);
+	ft_printf("|%5.9f|\n", nb);
+	printf("|%5.9f|\n\n", nb);
+
+	nb = 0.0/0.0;
+	ft_printf("|%f|\n", nb);
+	printf("|%f|\n\n", nb);
+	ft_printf("|%12f|\n", nb);
+	printf("|%12f|\n\n", nb);
+	ft_printf("|%-12f|\n", nb);
+	printf("|%-12f|\n\n", nb);
+	ft_printf("|%5.9f|\n", nb);
+	printf("|%5.9f|\n\n", nb);
+	/*double		nb;
+	  nb = -0.0;
+	  ft_printf("|% f|\n", nb);
+	  printf("|% f|\n", nb);
+	  ft_printf("|%+f|\n", nb);
+	  printf("|%+f|\n", nb);
+	  ft_printf("|%#f|\n", nb);
+	  printf("|%#f|\n", nb);
+	  ft_printf("|%.2f|\n", nb);
+	  printf("|%.2f|\n", nb);
+	  ft_printf("|%.14f|\n", nb);
+	  printf("|%.14f|\n", nb);
+	  ft_printf("|%#.0f|\n", nb);
+	  printf("|%#.0f|\n", nb);
+	  ft_printf("|% .5f|\n", nb);
+	  printf("|% .5f|\n", nb);
+	  ft_printf("|%# .0f|\n", nb);
+	  printf("|%# .0f|\n", nb);
+	  ft_printf("|% #.0f|\n", nb);
+	  printf("|% #.0f|\n", nb);
+	  ft_printf("|%+.5f|\n", nb);
+	  printf("|%+.5f|\n", nb);
+	  ft_printf("|%+.0f|\n", nb);
+	  printf("|%+.0f|\n", nb);
+	  ft_printf("|%#+.0f|\n", nb);
+	  printf("|%#+.0f|\n", nb);
+	  ft_printf("|%0.5f|\n", nb);
+	  printf("|%0.5f|\n", nb);
+	  ft_printf("|%-.5f|\n", nb);
+	  printf("|%-.5f|\n", nb);
+	  ft_printf("|%5f|\n", nb);
+	  printf("|%5f|\n", nb);
+	  ft_printf("|% 5f|\n", nb);
+	  printf("|% 5f|\n", nb);
+	  ft_printf("|%+5f|\n", nb);
+	  printf("|%+5f|\n", nb);
+	  ft_printf("|%# 5f|\n", nb);
+	  printf("|%# 5f|\n", nb);
+	  ft_printf("|%#+5f|\n", nb);
+	  printf("|%#+5f|\n", nb);
+	  ft_printf("|%-5f|\n", nb);
+	  printf("|%-5f|\n", nb);
+	  ft_printf("|%05f|\n", nb);
+	  printf("|%05f|\n", nb);
+	  ft_printf("|%+05f|\n", nb);
+	  printf("|%+05f|\n", nb);
+	  ft_printf("|%0+5f|\n", nb);
+	  printf("|%0+5f|\n", nb);
+	  ft_printf("|%05.3f|\n", nb);
+	  printf("|%05.3f|\n", nb);
+	  ft_printf("|%0#5.0f|\n", nb);
+	  printf("|%0#5.0f|\n", nb);
+	  ft_printf("|%-5.3f|\n", nb);
+	  printf("|%-5.3f|\n", nb);
+	  ft_printf("|%-#5.0f|\n", nb);
+	  printf("|%-#5.0f|\n", nb);
+	  ft_printf("|%+05.3f|\n", nb);
+	  printf("|%+05.3f|\n", nb);
+	  ft_printf("|%0+#5.0f|\n", nb);
+	  printf("|%0+#5.0f|\n", nb);
+	  ft_printf("|%0 5.3f|\n", nb);
+	  printf("|%0 5.3f|\n", nb);
+	  ft_printf("|% 05.3f|\n", nb);
+	  printf("|% 05.3f|\n", nb);
+	  ft_printf("|%#0 5.0f|\n", nb);
+	  printf("|%#0 5.0f|\n", nb);
+	  ft_printf("|%-+5.3f|\n", nb);
+	  printf("|%-+5.3f|\n", nb);
+	  ft_printf("|%-#+5.0f|\n", nb);
+	  printf("|%-#+5.0f|\n", nb);*/
+
 	/*ft_printf("{% 5.f}\n", 137.0);
-	printf("{% 5.f}\n\n", 137.0);
+	  printf("{% 5.f}\n\n", 137.0);
 
-	ft_printf("{%05.f}\n", 137.0);
-	printf("{%05.f}\n\n", 137.0);
+	  ft_printf("{%05.f}\n", 137.0);
+	  printf("{%05.f}\n\n", 137.0);
 
-	ft_printf("{%-05.f}\n", 137.0);
-	printf("{%-05.f}\n\n", 137.0);
+	  ft_printf("{%-05.f}\n", 137.0);
+	  printf("{%-05.f}\n\n", 137.0);
 
-	ft_printf("{%+5.f}\n", 137.0);
-	printf("{%+5.f}\n\n", 137.0);
+	  ft_printf("{%+5.f}\n", 137.0);
+	  printf("{%+5.f}\n\n", 137.0);
 
-	ft_printf("{%+#5.f}\n", 137.0);
-	printf("{%+#5.f}\n\n", 137.0);
+	  ft_printf("{%+#5.f}\n", 137.0);
+	  printf("{%+#5.f}\n\n", 137.0);
 
-	ft_printf("{%-5.f}\n", 137.0);
-	printf("{%-5.f}\n\n", 137.0);
+	  ft_printf("{%-5.f}\n", 137.0);
+	  printf("{%-5.f}\n\n", 137.0);
 
-	ft_printf("{%#5.f}\n", 137.0);
-	printf("{%#5.f}\n\n", 137.0);
+	  ft_printf("{%#5.f}\n", 137.0);
+	  printf("{%#5.f}\n\n", 137.0);
 
-	ft_printf("{%5.f}\n", 137.0);
-	printf("{%5.f}\n\n", 137.0);
+	  ft_printf("{%5.f}\n", 137.0);
+	  printf("{%5.f}\n\n", 137.0);
 
-	ft_printf("{%5.f}\n", 0.0);
-	printf("{%5.f}\n\n", 0.0);
+	  ft_printf("{%5.f}\n", 0.0);
+	  printf("{%5.f}\n\n", 0.0);
 
-	ft_printf("{%#5f}\n", 1.0);
-	printf("{%#5f}\n\n", 1.0);
+	  ft_printf("{%#5f}\n", 1.0);
+	  printf("{%#5f}\n\n", 1.0);
 
-	ft_printf("{%#5f}\n", 0.0);
-	printf("{%#5f}\n\n", 0.0);
+	  ft_printf("{%#5f}\n", 0.0);
+	  printf("{%#5f}\n\n", 0.0);
 
-	ft_printf("{%5f}\n", 0.0);
-	printf("{%5f}\n\n", 0.0);*/
+	  ft_printf("{%5f}\n", 0.0);
+	  printf("{%5f}\n\n", 0.0);*/
 	/*ft_printf("{%#.f, %#.0f}\n", 0.0, 0.0);
 	  printf("{%#.f, %#.0f}\n\n", 0.0, 0.0);
 
