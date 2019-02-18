@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/15 18:56:37 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/18 13:57:04 by lnicosia         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,8 +28,36 @@ void	sizes(void)
 
 int		main(void)
 {
-	ft_printf("|%01.u|\n", 0);
+	ft_printf("{% S}\n", "(null)");
+	printf("{% S}\n\n", "(null)");
+
+	ft_printf("|%s|\n", "abc");
+	printf("|%s|\n\n", "abc");
+
+	ft_printf("|%4.s|\n", "42");
+	printf("|%4.s|\n\n", "42");
+
+	ft_printf("|%4.1s|\n", "42");
+	printf("|%4.1s|\n\n", "42");
+
+	ft_printf("|%4s|\n", "42");
+	printf("|%4s|\n\n", "42");
+
+	ft_printf("|%.01s|\n", "");
+	printf("|%.01s|\n\n", "");
+
+	ft_printf("|%.02s|\n", "");
+	printf("|%.02s|\n\n", "");
+
+	ft_printf("|%2s|\n", "");
+	printf("|%2s|\n\n", "");
+
+	/*ft_printf("|%01.u|\n", 0);
 	printf("|%01.u|\n\n", 0);
+
+	ft_printf("|%01.d|\n", 0);
+	printf("|%01.d|\n\n", 0);*/
+
 	//ft_printf("|%d||%d||%d|\n");
 
 	/*ft_printf(NULL);

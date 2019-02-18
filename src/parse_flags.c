@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:40:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/15 18:02:02 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/18 11:24:35 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,8 @@ static void	parse_l_min(const char *s, int *i, t_data *data)
 	{
 		nb = pf_atoi(s + *i);
 		data->l_min = nb;
-		while (nb != 0)
-		{
+		while (s[*i] >= '0' && s[*i] <= '9')
 			(*i)++;
-			nb /= 10;
-		}
 	}
 }
 
@@ -58,13 +55,8 @@ static void parse_prec(const char *s, int *i, t_data *data)
 	{
 		nb = pf_atoi(s + *i);
 		data->prec = nb;
-		if (nb == 0)
+		while (s[*i] >= '0' && s[*i] <= '9')
 			(*i)++;
-		while (nb != 0)
-		{
-			(*i)++;
-			nb /= 10;
-		}
 	}
 	else
 		data->prec = 0;

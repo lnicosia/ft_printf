@@ -6,14 +6,14 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 19:05:57 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 17:57:00 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/18 11:38:44 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "put_padding.h"
 
-static void	set_paddingx(t_data *data, long nb, int base_len)
+static void	set_paddingx(t_data *data, unsigned long nb, int base_len)
 {
 	data->padding.size = (nb == 0 && data->prec != 0) ? 1 : 0;
 	while (nb != 0)
@@ -40,9 +40,9 @@ static void	set_paddingx(t_data *data, long nb, int base_len)
 
 void	pf_putaddr(t_data *data)
 {
-	long	nb;
+	unsigned long	nb;
 
-	nb = va_arg(data->ap, long);
+	nb = va_arg(data->ap, unsigned long);
 	set_paddingx(data, nb, 16);
 	put_left_spaces(data);
 	fill_buffer(data, "0x", 2);

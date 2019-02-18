@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 20:09:15 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 15:56:45 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/18 10:24:18 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	pf_putulong(unsigned long nb, t_data *data)
 static void	set_padding(t_data *data, unsigned long nb)
 {
 	data->padding.size = 0;
-	if (nb == 0)
+	if (nb == 0 && data->prec != 0)
 		data->padding.size = 1;
 	while (nb != 0)
 	{
