@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_putfloat.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
+/*   Updated: 2019/02/18 15:50:23 by gaerhard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "ft_printf.h"
@@ -129,7 +141,10 @@ static void	set_padding(t_data *data, long i_part)
 	if (data->sharp)
 		size++;
 	if (data->plus || data->space || i_part < 0)
+	{
+		data->padding.sign = 1;
 		size++;
+	}
 	while (i_part != 0)
 	{
 		size++;
@@ -162,14 +177,16 @@ void	pf_putfloat(t_data *data)
 	//printf("nb = %lf\n", nb);
 	if (data->prec == -1)
 		data->prec = 6;
+	if (data->prec == 0)
+		nb += (nb < 0) ? -0.5 : 0.5;
 	//printf("prec = %d\n", data->prec);
 	i_part = (long)nb;
 	f_part = nb - (double)i_part;
 	//printf("f_part%f\n", f_part);
 	set_padding(data, i_part);
 	put_left_spaces(data);
-	put_zeros(data);
 	put_sign(data, i_part);
+	put_zeros(data);
 	if ((i = pf_itoa(data, i_part)) == -1)
 		return ;
 	if (data->prec != 0 || data->sharp)
