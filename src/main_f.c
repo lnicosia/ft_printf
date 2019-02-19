@@ -6,7 +6,7 @@
 /*   fy: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 fy lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/18 18:53:47 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/19 18:51:37 by gaerhard         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 fy lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,8 +28,41 @@ void	sizes(void)
 
 int		main(void)
 {
-	ft_printf("|%10lf|\n", 0.0);
-	printf("|%10lf|\n\n", 0.0);
+	double nb = 12345.12345678987654321;
+	printf("|%-10.0lf|\n", nb);
+	ft_printf("|%-10.0lf|\n\n", nb);
+	printf("|%-1.10lf|\n", nb);
+	ft_printf("|%-1.10lf|\n\n", nb);
+	printf("|%3.2lf|\n", nb);
+	ft_printf("|%3.2lf|\n\n", nb);
+	printf("|%-05lf|\n", nb);
+	ft_printf("|%-05lf|\n\n", nb);
+	printf("|%09lf|\n", nb);
+	ft_printf("|%09lf|\n\n", nb);
+	printf("|%03lf|\n", nb);
+	ft_printf("|%03lf|\n\n", nb);
+	printf("|%-5.0lf|\n", nb);
+	ft_printf("|%-5.0lf|\n\n", nb);
+	printf("|%#-5.0lf|\n", nb);
+	ft_printf("|%#-5.0lf|\n\n", nb);
+	printf("|%#-10.0lf|\n", nb);
+	ft_printf("|%#-10.0lf|\n\n", nb);
+	printf("|%#10.0lf|\n", nb);
+	ft_printf("|%#10.0lf|\n\n", nb);
+	printf("|%#10.lf|\n", nb);
+	ft_printf("|%#10.lf|\n\n", nb);
+	printf("|%+#10.lf|\n", nb);
+	ft_printf("|%+#10.lf|\n\n", nb);
+	printf("|%+-#10.lf|\n", nb);
+	ft_printf("|%+-#10.lf|\n\n", nb);
+	printf("|%+-#10.9lf|\n", nb);
+	ft_printf("|%+-#10.9lf|\n\n", nb);
+	printf("|% -#10.9lf|\n", nb);
+	ft_printf("|% -#10.9lf|\n\n", nb);
+	printf("|% -#10.lf|\n", nb);
+	ft_printf("|% -#10.lf|\n\n", nb);
+	printf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nisl mauris, euismod at diam id, mattis iaculis ex. Nullam ac consequat risus. Mauris ultrices nulla lacus. Sed mollis elit ut sed.\n");
+	ft_printf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nisl mauris, euismod at diam id, mattis iaculis ex. Nullam ac consequat risus. Mauris ultrices nulla lacus. Sed mollis elit ut sed.\n");
 
 	/*double		nb;
 	nb = -12547.58;

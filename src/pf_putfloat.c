@@ -6,7 +6,7 @@
 /*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
-/*   Updated: 2019/02/18 18:55:55 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/19 17:39:37 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ int		pf_itoa(t_data *data, long nb)
 
 static void	set_padding(t_data *data, long i_part, long double nb)
 {
+	data->padding.size = (data->prec > 0) ? data->prec + 1 : data->prec;
 	if (i_part == 0)
 		data->padding.size++;
 	if (data->sharp)
@@ -149,7 +150,7 @@ static void	set_padding(t_data *data, long i_part, long double nb)
 	}
 	data->padding.left_spaces = 0;
 	data->padding.right_spaces = 0;
-	if (data->l_min > data->padding.size && data->prec == 0)
+	if (data->l_min > data->padding.size/* && data->prec == 0*/)
 	{
 		if (!data->left)
 		{
