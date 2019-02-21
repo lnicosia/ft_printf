@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/21 17:50:01 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/21 18:11:48 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ void		fill_buffer(t_data *data, const char *s, unsigned int size)
 	int	i;
 
 	i = 0;
-	//printf("size = %u\n", size);
-	//printf("s = \"%s\", size = %u\n", s, size);
+		data->ret += size;
 	if (data->i + size > 2147483647)
 	{
 		data->ret = -1;
@@ -48,7 +47,7 @@ void		fill_buffer(t_data *data, const char *s, unsigned int size)
 	if (data->i + size >= BUFF_SIZE)
 	{
 		write(1, data->buffer, data->i);
-		data->ret += data->i;
+		//data->ret += data->i;
 		data->i = 0;
 	}
 	if (size < BUFF_SIZE)
@@ -63,11 +62,8 @@ void		fill_buffer(t_data *data, const char *s, unsigned int size)
 	else
 	{
 		write(1, s, size);
-		data->ret += size;
+		//data->ret += size;
 	}
-	//printf("ret = %u\n", data->ret);
-	//printf("buff = \"%s\"\n", data->buffer);
-
 }
 
 void		reset_options(t_data *data)
@@ -125,7 +121,7 @@ int			ft_printf(const char *restrict format, ...)
 		i++;
 	}
 	write(1, data.buffer, data.i);
-	data.ret += data.i;
+	//data.ret += data.i;
 	va_end(data.ap);
 	return (data.ret);
 }
