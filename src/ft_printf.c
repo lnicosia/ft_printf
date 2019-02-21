@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/18 16:58:06 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/21 13:48:56 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void		fill_buffer(t_data *data, const char *s, int size)
 			data->i++;
 		}
 	}
-	//printf("i = %d\n", data->i);
 }
 
 void		reset_options(t_data *data)

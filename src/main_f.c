@@ -6,7 +6,7 @@
 /*   fy: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 fy lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/19 18:51:37 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/21 12:14:47 by lnicosia         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 fy lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -22,13 +22,18 @@ void	sizes(void)
 	printf("sizeof(long) = %lu\n", sizeof(long));
 	printf("sizeof(long long) = %lu\n", sizeof(long long));
 	printf("sizeof(float) = %lu\n", sizeof(float));
-	printf("sizeof(doufle) = %lu\n", sizeof(double));
-	printf("sizeof(long doufle) = %lu\n", sizeof(long double));
+	printf("sizeof(double) = %lu\n", sizeof(double));
+	printf("sizeof(long double) = %lu\n", sizeof(long double));
 }
 
 int		main(void)
 {
-	double nb = 12345.12345678987654321;
+	long double nb = 4654654654654564654684864.5464654;
+
+	ft_printf("%Lf\n", nb);
+	printf("%Lf\n", nb);
+
+	/*double nb = 12345.12345678987654321;
 	printf("|%-10.0lf|\n", nb);
 	ft_printf("|%-10.0lf|\n\n", nb);
 	printf("|%-1.10lf|\n", nb);
@@ -62,7 +67,7 @@ int		main(void)
 	printf("|% -#10.lf|\n", nb);
 	ft_printf("|% -#10.lf|\n\n", nb);
 	printf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nisl mauris, euismod at diam id, mattis iaculis ex. Nullam ac consequat risus. Mauris ultrices nulla lacus. Sed mollis elit ut sed.\n");
-	ft_printf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nisl mauris, euismod at diam id, mattis iaculis ex. Nullam ac consequat risus. Mauris ultrices nulla lacus. Sed mollis elit ut sed.\n");
+	ft_printf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nisl mauris, euismod at diam id, mattis iaculis ex. Nullam ac consequat risus. Mauris ultrices nulla lacus. Sed mollis elit ut sed.\n");*/
 
 	/*double		nb;
 	nb = -12547.58;

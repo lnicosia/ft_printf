@@ -6,7 +6,7 @@
 /*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
-/*   Updated: 2019/02/19 17:39:37 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/21 12:23:38 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,10 @@ void	pf_putfloat(t_data *data)
 	long double		nb;
 	double			f_part;
 
-	nb = va_arg(data->ap, double);
+	if (data->size == 16)
+		nb = va_arg(data->ap, long double);
+	else
+		nb = va_arg(data->ap, double);
 	//printf("nb = %Lf\n", nb);
 	if (nb == 1.0 / 0.0 || nb == -1.0 / 0.0 || nb != nb)
 	{
