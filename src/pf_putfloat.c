@@ -6,7 +6,7 @@
 /*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
-/*   Updated: 2019/02/21 12:23:38 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:13:22 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ int		pf_ftoa(t_data *data, long nb, int precision)
 	char	*str;
 
 	if (!(str = pf_strnew(precision)))
+	{
+		data->ret = -1;
 		return (-1);
+	}
 	i = 0;
 	while (nb > 0)
 	{
