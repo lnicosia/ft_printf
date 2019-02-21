@@ -6,53 +6,52 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/21 13:48:56 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:50:01 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	(*g_printers[128])(t_data *data);
-
-void		init_put(void)
+static void	(*const g_printers[128])(t_data *data) =
 {
-	int	i;
+	['d'] = &pf_putnbr,
+	['D'] = &pf_putnbr,
+	['i'] = &pf_putnbr,
+	['o'] = &pf_putnbr_o,
+	['b'] = &pf_putnbr_b,
+	['O'] = &pf_putnbr_o,
+	['u'] = &pf_putunbr,
+	['U'] = &pf_putunbr,
+	['x'] = &pf_putnbr_x,
+	['X'] = &pf_putnbr_xcaps,
+	['c'] = &pf_putchar,
+	['C'] = &pf_putchar,
+	['s'] = &pf_putstr,
+	['S'] = &pf_putstr,
+	['p'] = &pf_putaddr,
+	['%'] = &pf_putpercent,
+	['f'] = &pf_putfloat,
+	['F'] = &pf_putfloat
+};
 
-	i = -1;
-	while (++i < 127)
-		g_printers[i] = &pf_invalid;
-	g_printers['d'] = &pf_putnbr;
-	g_printers['D'] = &pf_putnbr;
-	g_printers['i'] = &pf_putnbr;
-	g_printers['o'] = &pf_putnbr_o;
-	g_printers['b'] = &pf_putnbr_b;
-	g_printers['O'] = &pf_putnbr_o;
-	g_printers['u'] = &pf_putunbr;
-	g_printers['U'] = &pf_putunbr;
-	g_printers['x'] = &pf_putnbr_x;
-	g_printers['X'] = &pf_putnbr_xcaps;
-	g_printers['c'] = &pf_putchar;
-	g_printers['C'] = &pf_putchar;
-	g_printers['s'] = &pf_putstr;
-	g_printers['S'] = &pf_putstr;
-	g_printers['p'] = &pf_putaddr;
-	g_printers['%'] = &pf_putpercent;
-	g_printers['f'] = &pf_putfloat;
-	g_printers['F'] = &pf_putfloat;
-}
-
-void		fill_buffer(t_data *data, const char *s, int size)
+void		fill_buffer(t_data *data, const char *s, unsigned int size)
 {
 	int	i;
 
 	i = 0;
+	//printf("size = %u\n", size);
+	//printf("s = \"%s\", size = %u\n", s, size);
+	if (data->i + size > 2147483647)
+	{
+		data->ret = -1;
+	}
 	if (data->i + size >= BUFF_SIZE)
 	{
 		write(1, data->buffer, data->i);
+		data->ret += data->i;
 		data->i = 0;
-		data->ret += 100;
 	}
-	else
+	if (size < BUFF_SIZE)
 	{
 		while (i < size)
 		{
@@ -61,6 +60,14 @@ void		fill_buffer(t_data *data, const char *s, int size)
 			data->i++;
 		}
 	}
+	else
+	{
+		write(1, s, size);
+		data->ret += size;
+	}
+	//printf("ret = %u\n", data->ret);
+	//printf("buff = \"%s\"\n", data->buffer);
+
 }
 
 void		reset_options(t_data *data)
@@ -101,14 +108,16 @@ int			ft_printf(const char *restrict format, ...)
 	data.ret = 0;
 	init_buffer(&data);
 	va_start(data.ap, format);
-	init_put();
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
 			c = parse_flags(format, &i, &data);
-			g_printers[c](&data);
+			if (g_printers[c] == NULL)
+				pf_invalid(&data);
+			else
+				g_printers[c](&data);
 		}
 		else
 			fill_buffer(&data, format + i, 1);

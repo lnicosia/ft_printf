@@ -6,8 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/18 13:57:04 by lnicosia         ###   ########.fr       */
-/*   Updated: 2019/02/13 18:11:31 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:43:34 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +27,18 @@ void	sizes(void)
 
 int		main(void)
 {
-	ft_printf("{% S}\n", "(null)");
+	int ret = 0;
+	char *s = "|0 1 2 3 4 5 6 7 8 9 10|\n";
+	ret = ft_printf("|%#8x|", 42);
+	printf("\nret = %d\n", ret);
+	ret = printf("|%#8x|", 42);
+	printf("\nret = %d\n", ret);
+
+	/*ret = ft_printf("invalid%");
+	printf("ret = %d\n", ret);
+	ret = printf("invalid%");
+	printf("ret = %d\n\n", ret);*/
+	/*ft_printf("{% S}\n", "(null)");
 	printf("{% S}\n\n", "(null)");
 
 	ft_printf("|%s|\n", "abc");
@@ -50,7 +60,7 @@ int		main(void)
 	printf("|%.02s|\n\n", "");
 
 	ft_printf("|%2s|\n", "");
-	printf("|%2s|\n\n", "");
+	printf("|%2s|\n\n", "");*/
 
 	/*ft_printf("|%01.u|\n", 0);
 	printf("|%01.u|\n\n", 0);

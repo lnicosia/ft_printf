@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/15 17:58:56 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/21 17:53:14 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ typedef struct	s_padding
 
 typedef struct	s_data
 {
-	va_list		ap;
-	char		buffer[BUFF_SIZE];
-	int			i;
-	int			left;
-	int			plus;
-	int			zero;
-	int			space;
-	int			sharp;
-	int			l_min;
-	int			prec;
-	int			size;
-	int			ret;
-	const char	*invalid;
-	t_padding	padding;
+	va_list			ap;
+	char			buffer[BUFF_SIZE];
+	int				i;
+	int				left;
+	int				plus;
+	int				zero;
+	int				space;
+	int				sharp;
+	int				l_min;
+	int				prec;
+	int				size;
+	unsigned int	ret;
+	const char		*invalid;
+	t_padding		padding;
 }				t_data;
 
 int		ft_printf(const char *restrict format, ...);
@@ -57,7 +57,7 @@ void	pf_putnbr_b(t_data *data);
 void	pf_putlong_base(unsigned long nbr, char *base, t_data *data);
 void	pf_invalid(t_data *data);
 void	pf_putpercent(t_data *data);
-void	fill_buffer(t_data *data, const char *s, int size);
+void	fill_buffer(t_data *data, const char *s, unsigned int size);
 char	parse_flags(const char *s, int *i, t_data *data);
 int		pf_atoi(const char *str);
 void	reset_options(t_data *data);
