@@ -6,10 +6,9 @@
 /*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
-/*   Updated: 2019/02/21 17:13:22 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/22 11:24:27 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdlib.h>
 #include <stdio.h>
 #include "ft_printf.h"
@@ -118,7 +117,10 @@ int		pf_itoa(t_data *data, long nb)
 	if (nb > 0)
 		nb = -nb;
 	if (!(str = pf_strnew(size)))
+	{
+		data->ret = -1;
 		return (-1);
+	}
 	i = 0;
 	while (nb < 0)
 	{
