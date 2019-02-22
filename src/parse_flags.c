@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:40:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/22 14:05:23 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 17:28:29 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	parse_l_min(const char *s, int *i, t_data *data)
 	}
 }
 
-static void parse_prec(const char *s, int *i, t_data *data)
+static void	parse_prec(const char *s, int *i, t_data *data)
 {
 	int	nb;
 
@@ -73,20 +73,17 @@ static void	parse_size(const char *s, int *i, t_data *data)
 {
 	int	l;
 	int	h;
-	int	L;
+	int	lu;
 
 	l = 0;
 	h = 0;
-	L = 0;
+	lu = 0;
 	while (s[*i] == 'l' || s[*i] == 'h' || s[*i] == 'z' || s[*i] == 'j'
 			|| s[*i] == 'L')
 	{
-		if (s[*i] == 'l')
-			l++;
-		else if (s[*i] == 'h')
-			h++;
-		else if (s[*i] == 'L')
-			L++;
+		l += (s[*i] == 'l') ? 1 : 0;
+		h += (s[*i] == 'h') ? 1 : 0;
+		lu += (s[*i] == 'L') ? 1 : 0;
 		(*i)++;
 	}
 	if (l == 0 && h == 0)
@@ -97,7 +94,7 @@ static void	parse_size(const char *s, int *i, t_data *data)
 		data->size = 2;
 	else if (h == 2)
 		data->size = 1;
-	if (L >= 1)
+	if (lu >= 1)
 		data->size = 16;
 }
 
@@ -112,7 +109,7 @@ static void	parse_wildcard(const char *s, int *i, t_data *data)
 	(*i)++;
 }
 
-char	parse_flags(const char *s, int *i, t_data *data)
+char		parse_flags(const char *s, int *i, t_data *data)
 {
 	while (s[*i] == 'l' || s[*i] == 'h' || s[*i] == 'z' || s[*i] == 'j'
 			|| s[*i] == '.' || s[*i] == '-' || s[*i] == '+' || s[*i] == '#'
