@@ -6,12 +6,12 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:40:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/21 11:38:41 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 14:05:23 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include <stdio.h>
+#include "ft_printf.h"
 
 static void	parse_options(const char *s, int *i, t_data *data)
 {
@@ -58,6 +58,13 @@ static void parse_prec(const char *s, int *i, t_data *data)
 		while (s[*i] >= '0' && s[*i] <= '9')
 			(*i)++;
 	}
+	else if (s[*i] == '*')
+	{
+		data->prec = va_arg(data->ap, int);
+		if (data->prec < 0)
+			data->prec = -1;
+		(*i)++;
+	}
 	else
 		data->prec = 0;
 }
@@ -94,21 +101,35 @@ static void	parse_size(const char *s, int *i, t_data *data)
 		data->size = 16;
 }
 
+static void	parse_wildcard(const char *s, int *i, t_data *data)
+{
+	data->l_min = va_arg(data->ap, int);
+	if (data->l_min < 0)
+	{
+		data->left = 1;
+		data->l_min = -data->l_min;
+	}
+	(*i)++;
+}
+
 char	parse_flags(const char *s, int *i, t_data *data)
 {
 	while (s[*i] == 'l' || s[*i] == 'h' || s[*i] == 'z' || s[*i] == 'j'
 			|| s[*i] == '.' || s[*i] == '-' || s[*i] == '+' || s[*i] == '#'
-			|| s[*i] == ' ' || (s[*i] >= '0' && s[*i] <= '9') || s[*i] == 'L')
+			|| s[*i] == ' ' || (s[*i] >= '0' && s[*i] <= '9') || s[*i] == 'L'
+			|| s[*i] == '*')
 	{
 		if (s[*i] == '-' || s[*i] == '+' || s[*i] == '#' || s[*i] == ' '
-			|| s[*i] == '0')
+				|| s[*i] == '0')
 			parse_options(s, i, data);
 		if (s[*i] >= '1' && s[*i] <= '9')
 			parse_l_min(s, i, data);
 		if (s[*i] == '.')
 			parse_prec(s, i, data);
+		if (s[*i] == '*')
+			parse_wildcard(s, i, data);
 		if (s[*i] == 'l' || s[*i] == 'h' || s[*i] == 'z' || s[*i] == 'j'
-			|| s[*i] == 'L')
+				|| s[*i] == 'L')
 			parse_size(s, i, data);
 	}
 	if (s[*i] != 'd' && s[*i] != 'i' && s[*i] != 'o' && s[*i] != 'u'

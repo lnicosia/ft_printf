@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/21 18:23:21 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 14:30:48 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,14 @@ int			ft_printf(const char *restrict format, ...)
 			else
 				g_printers[c](&data);
 		}
+		else if (format[i] == '{')
+			parse_color(format, &i, &data);
 		else
 			fill_buffer(&data, format + i, 1);
 		reset_options(&data);
 		i++;
 	}
 	write(1, data.buffer, data.i);
-	//data.ret += data.i;
 	va_end(data.ap);
 	return (data.ret);
 }

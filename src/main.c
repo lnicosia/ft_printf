@@ -6,12 +6,14 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/21 17:43:34 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 14:39:01 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <locale.h>
+#include "color.h"
 
 void	sizes(void)
 {
@@ -27,12 +29,11 @@ void	sizes(void)
 
 int		main(void)
 {
-	int ret = 0;
-	char *s = "|0 1 2 3 4 5 6 7 8 9 10|\n";
-	ret = ft_printf("|%#8x|", 42);
-	printf("\nret = %d\n", ret);
-	ret = printf("|%#8x|", 42);
-	printf("\nret = %d\n", ret);
+	ft_printf("|{red}rouge {green}vert {yellow}jaune {cyan}cyan {magenta}magenta {blue}bleu{reset}|\n");
+	ft_printf("|{{red}rouge {{green}vert {{yellow}jaune {cyan}cyan {{magenta}magenta {blue}bleu{reset}|\n");
+	printf("{red}rouge {green}vert {yellow}jaune {reset}\n");
+	/*int ret = printf(RESET); printf("red = %d\n", ret);
+	printf(RESET);*/
 
 	/*ret = ft_printf("invalid%");
 	printf("ret = %d\n", ret);

@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/21 18:11:17 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 14:14:57 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
-# define BUFF_SIZE 3
+# define BUFF_SIZE 4096
 
 typedef struct	s_padding
 {
@@ -59,7 +59,9 @@ void	pf_invalid(t_data *data);
 void	pf_putpercent(t_data *data);
 void	fill_buffer(t_data *data, const char *s, unsigned int size);
 char	parse_flags(const char *s, int *i, t_data *data);
+void	parse_color(const char *s, int *i, t_data *data);
 int		pf_atoi(const char *str);
 void	reset_options(t_data *data);
+int		pf_strnequ(char const *s1, char const *s2, size_t n);
 
 #endif
