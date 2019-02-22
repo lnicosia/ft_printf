@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/22 15:39:40 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:19:10 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int		main(void)
 	/*int ret = printf(RESET); printf("red = %d\n", ret);
 	printf(RESET);*/
 
-	/*ret = ft_printf("invalid%");
+	int ret = ft_printf("invalid%");
 	printf("ret = %d\n", ret);
 	ret = printf("invalid%");
-	printf("ret = %d\n\n", ret);*/
+	printf("ret = %d\n\n", ret);
 	/*ft_printf("{% S}\n", "(null)");
 	printf("{% S}\n\n", "(null)");
 

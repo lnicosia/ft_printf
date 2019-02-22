@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:22:53 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/13 17:59:41 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:13:33 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static void	set_padding(t_data *data)
 	if (data->left)
 		data->padding.right_spaces = data->l_min - data->padding.zeros - 1;
 	else
-		data->padding.left_spaces = data->l_min	- data->padding.zeros - 1;
+		data->padding.left_spaces = data->l_min - data->padding.zeros - 1;
 }
 
-void	pf_putpercent(t_data *data)
+void		pf_putpercent(t_data *data)
 {
 	set_padding(data);
 	put_left_spaces(data);

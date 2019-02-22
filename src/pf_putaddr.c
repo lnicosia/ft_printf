@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 19:05:57 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/18 11:38:44 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:14:09 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	set_paddingx(t_data *data, unsigned long nb, int base_len)
 			- data->padding.size - 2;
 }
 
-void	pf_putaddr(t_data *data)
+void		pf_putaddr(t_data *data)
 {
 	unsigned long	nb;
 

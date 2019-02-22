@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/22 14:30:48 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:22:53 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,47 +76,53 @@ void		reset_options(t_data *data)
 	data->padding.zeros = 0;
 }
 
-void		init_buffer(t_data *data)
+void		init_data(t_data *data)
 {
 	int	i;
 
 	i = -1;
+	data->i = 0;
+	data->ret = 0;
 	while (++i < BUFF_SIZE)
 		data->buffer[i] = '\0';
 	reset_options(data);
 }
 
-int			ft_printf(const char *restrict format, ...)
+void		parse_format(const char *restrict format, t_data *data)
 {
-	int		i;
-	int		c;
-	t_data	data;
+	int	i;
+	int	c;
 
-	if (!format)
-		return (-1);
 	i = 0;
-	data.i = 0;
-	data.ret = 0;
-	init_buffer(&data);
-	va_start(data.ap, format);
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			c = parse_flags(format, &i, &data);
+			c = parse_flags(format, &i, data);
 			if (g_printers[c] == NULL)
-				pf_invalid(&data);
+				pf_invalid(data);
 			else
-				g_printers[c](&data);
+				g_printers[c](data);
 		}
 		else if (format[i] == '{')
-			parse_color(format, &i, &data);
+			parse_color(format, &i, data);
 		else
-			fill_buffer(&data, format + i, 1);
-		reset_options(&data);
+			fill_buffer(data, format + i, 1);
+		reset_options(data);
 		i++;
 	}
+}
+
+int			ft_printf(const char *restrict format, ...)
+{
+	t_data	data;
+
+	if (!format)
+		return (-1);
+	init_data(&data);
+	va_start(data.ap, format);
+	parse_format(format, &data);
 	write(1, data.buffer, data.i);
 	va_end(data.ap);
 	return (data.ret);

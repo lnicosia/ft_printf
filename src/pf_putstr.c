@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 11:07:40 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/18 13:47:32 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 16:00:52 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static void	set_padding(t_data *data, char *s)
 static char	*cast(t_data *data)
 {
 	char	*s;
-	int	i;
+	int		i;
 
 	i = 0;
 	s = va_arg(data->ap, char *);
 	return (s);
 }
 
-void	pf_putstr(t_data *data)
+void		pf_putstr(t_data *data)
 {
 	char	*s;
 

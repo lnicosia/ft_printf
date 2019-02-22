@@ -6,7 +6,7 @@
 #    By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/06 15:56:21 by lnicosia          #+#    #+#              #
-#    Updated: 2019/02/22 14:06:06 by lnicosia         ###   ########.fr        #
+#    Updated: 2019/02/22 16:10:07 by lnicosia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ BIN_DIR = .
 SRC_RAW = pf_putchar.c pf_putstr.c ft_printf.c pf_putnbr.c pf_putunbr.c \
 		  pf_putaddr.c pf_putnbr_base.c pf_invalid.c pf_putpercent.c \
 		  pf_putlong_base.c parse_flags.c pf_atoi.c put_padding.c pf_putfloat.c\
-		  pf_strnequ.c parse_colors.c
+		  pf_strnequ.c parse_colors.c base_utils.c
 
-HEADERS = ft_printf.h put_padding.h
+HEADERS = ft_printf.h put_padding.h color.h base_utils.h
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_RAW))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_RAW:.c=.o))
