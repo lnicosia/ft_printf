@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/22 14:39:01 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/22 15:39:40 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	sizes(void)
 int		main(void)
 {
 	ft_printf("|{red}rouge {green}vert {yellow}jaune {cyan}cyan {magenta}magenta {blue}bleu{reset}|\n");
-	ft_printf("|{{red}rouge {{green}vert {{yellow}jaune {cyan}cyan {{magenta}magenta {blue}bleu{reset}|\n");
+	ft_printf("|{{red}rouge {green}vert {{{{yellow}jaune {cyan}cyan {{magenta}magenta {blue}bleu{reset}|\n");
+	ft_printf(" {{ {querty} {\n");
 	printf("{red}rouge {green}vert {yellow}jaune {reset}\n");
 	/*int ret = printf(RESET); printf("red = %d\n", ret);
 	printf(RESET);*/
