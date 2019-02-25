@@ -6,7 +6,7 @@
 /*   fy: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 fy lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/21 17:19:54 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/22 17:05:43 by gaerhard         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 fy lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -29,58 +29,58 @@ void	sizes(void)
 int		main(void)
 {
 	int ret;
-	double nb = 12345.12345678987654321;
+	double nb = 12345.123456789123456789123456789;
 	printf("|%-10.0lf|\n", nb);
-	ret = ft_printf("|%-10.0lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%-10.0lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%-1.10lf|\n", nb);
-	ret = ft_printf("|%-1.10lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%-1.10lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%3.2lf|\n", nb);
-	ret = ft_printf("|%3.2lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%3.2lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%-05lf|\n", nb);
-	ret = ft_printf("|%-05lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%-05lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%09lf|\n", nb);
-	ret = ft_printf("|%09lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%09lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%03lf|\n", nb);
-	ret = ft_printf("|%03lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%03lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%-5.0lf|\n", nb);
-	ret = ft_printf("|%-5.0lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%-5.0lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%#-5.0lf|\n", nb);
-	ret = ft_printf("|%#-5.0lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%#-5.0lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%#-10.0lf|\n", nb);
-	ret = ft_printf("|%#-10.0lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%#-10.0lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%#10.0lf|\n", nb);
-	ret = ft_printf("|%#10.0lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%#10.0lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%#10.lf|\n", nb);
-	ret = ft_printf("|%#10.lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%#10.lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%+#10.lf|\n", nb);
-	ret = ft_printf("|%+#10.lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%+#10.lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%+-#10.lf|\n", nb);
-	ret = ft_printf("|%+-#10.lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%+-#10.lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|%+-#10.9lf|\n", nb);
-	ret = ft_printf("|%+-#10.9lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|%+-#10.9lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|% -#10.9lf|\n", nb);
-	ret = ft_printf("|% -#10.9lf|\n\n", nb);
-	printf("ret = %d\n", ret);
+	ret = ft_printf("|% -#10.9lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	printf("|% -#10.lf|\n", nb);
-	ret = ft_printf("|% -#10.lf|\n\n", nb);
-	printf("ret = %d\n", ret);
-	printf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nisl mauris, euismod at diam id, mattis iaculis ex. Nullam ac consequat risus. Mauris ultrices nulla lacus. Sed mollis elit ut sed.\n");
-	ret = ft_printf("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nisl mauris, euismod at diam id, mattis iaculis ex. Nullam ac consequat risus. Mauris ultrices nulla lacus. Sed mollis elit ut sed.\n");
-
+	ret = ft_printf("|% -#10.lf|\n", nb);
+	printf("ret = %d\n\n", ret);
+	ret = printf("|% -#10.19lf|\n", nb);
+	ret = ft_printf("|% -#10.19lf|\n", nb);
+	printf("ret = %d\n\n", ret);
 	/*double		nb;
 	nb = -12547.58;
 	ret = ft_printf("|% f|\n", nb);

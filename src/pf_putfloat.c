@@ -6,85 +6,52 @@
 /*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
-/*   Updated: 2019/02/22 11:24:27 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/22 18:38:58 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-#include <stdio.h>
+
 #include "ft_printf.h"
 #include "put_padding.h"
+#include <stdlib.h>
 
-static int	get_size(long nbr)
+static void	put_sign_float(t_data *data, long double nb)
 {
-	int size;
-
-	size = 0;
-	if (nbr == 0)
-		size++;
-	while (nbr != 0)
+	if (data->padding.sign)
 	{
-		nbr /= 10;
-		size++;
+		if (nb < 0 || 1.0 / nb < 0)
+		{
+			fill_buffer(data, "-", 1);
+		}
+		else if (data->plus)
+			fill_buffer(data, "+", 1);
+		else if (data->space)
+			fill_buffer(data, " ", 1);
 	}
-	return (size);
 }
 
-static long	power(long nb, int power)
+static long double cast_float(t_data *data)
 {
-	long tmp;
+	long double nb;
 
-	tmp = nb;
-	if (power == 0)
-		return (1);
-	if (power < 1)
-		return (0);
-	while (--power)
-		nb *= tmp;
+	if (data->size == 16)
+		nb = va_arg(data->ap, long double);
+	else
+		nb = va_arg(data->ap, double);
 	return (nb);
 }
 
-char		*pf_strnew(int size)
-{
-	int		i;
-	char	*str;
 
-	i = 0;
-	if (!(str = (char *)malloc(sizeof(*str) * (size + 1))))
-		return (NULL);
-	while (i < size)
-	{
-		str[i] = '\0';
-		i++;
-	}
-	return (str);
-}
 
-void	rev_str(char *str, int len) 
-{ 
-	int		i;
-	char	tmp;
 
-	i = 0; 
-	while (i < len)
-	{ 
-		tmp = str[i]; 
-		str[i] = str[len - 1]; 
-		str[len - 1] = tmp;
-		i++;
-		len--; 
-	} 
-}
+
 
 int		pf_ftoa(t_data *data, long nb, int precision)
 {
 	int		i;
 	char	*str;
 
-	if (!(str = pf_strnew(precision)))
-	{
-		data->ret = -1;
+	if (!(str = pf_strnew(precision, data)))
 		return (-1);
-	}
 	i = 0;
 	while (nb > 0)
 	{
@@ -97,8 +64,7 @@ int		pf_ftoa(t_data *data, long nb, int precision)
 	rev_str(str, i);
 	str[i++] = '\0';
 	fill_buffer(data, str, precision);
-	free(str);
-	str = NULL;
+	pf_strdel(&str);
 	return (i);
 }
 
@@ -114,26 +80,32 @@ int		pf_itoa(t_data *data, long nb)
 		fill_buffer(data, "0", 1);
 		return (1);
 	}
-	if (nb > 0)
-		nb = -nb;
-	if (!(str = pf_strnew(size)))
-	{
-		data->ret = -1;
+	nb = (nb > 0) ? -nb : nb;
+	if (!(str = pf_strnew(size, data)))
 		return (-1);
-	}
 	i = 0;
 	while (nb < 0)
 	{
-		str[i] = '0' - (nb % 10);
+		str[i++] = '0' - (nb % 10);
 		nb = nb / 10;
-		i++;
 	}
 	rev_str(str, i);
-	str[i++] = '\0';
 	fill_buffer(data, str, size);
-	free(str);
-	str = NULL;
-	return (i);
+	pf_strdel(&str);
+	return (i + 1);
+}
+
+static void	set_padding_lmin(t_data *data)
+{
+	if (!data->left)
+	{
+		if (data->zero)
+			data->padding.zeros = data->l_min - data->padding.size;
+		else
+			data->padding.left_spaces = data->l_min - data->padding.size;
+	}
+	else
+		data->padding.right_spaces = data->l_min - data->padding.size;
 }
 
 static void	set_padding(t_data *data, long i_part, long double nb)
@@ -155,18 +127,8 @@ static void	set_padding(t_data *data, long i_part, long double nb)
 	}
 	data->padding.left_spaces = 0;
 	data->padding.right_spaces = 0;
-	if (data->l_min > data->padding.size/* && data->prec == 0*/)
-	{
-		if (!data->left)
-		{
-			if (data->zero)
-				data->padding.zeros = data->l_min - data->padding.size;
-			else
-				data->padding.left_spaces = data->l_min - data->padding.size;
-		}
-		else
-			data->padding.right_spaces = data->l_min - data->padding.size;
-	}
+	if (data->l_min > data->padding.size)
+		set_padding_lmin(data);
 }
 
 static void	set_padding_inf(t_data *data, long double nb)
@@ -185,86 +147,66 @@ static void	set_padding_inf(t_data *data, long double nb)
 		data->padding.right_spaces = data->l_min - data->padding.size;
 }
 
-static void	inf(t_data *data, long double nb)
+static int	inf(t_data *data, long double nb)
 {
-	set_padding_inf(data, nb);
-	put_left_spaces(data);
-	if (nb == -1.0 / 0.0)
-		fill_buffer(data, "-", 1);
-	else if (data->plus)
-		fill_buffer(data, "+", 1);
-	else if (data->space)
-		fill_buffer(data, " ", 1);
-	put_zeros(data);
-	if (nb == -1.0 / 0.0)
-		fill_buffer(data, "inf", 3);
-	else if (nb == 1.0 / 0.0)
-		fill_buffer(data, "inf", 3);
-	else
-		fill_buffer(data, "nan", 3);
-	put_right_spaces(data);
-}
-
-static void	put_sign_float(t_data *data, long double nb)
-{
-	if (data->padding.sign)
+	if (nb == 1.0 / 0.0 || nb == -1.0 / 0.0 || nb != nb)
 	{
-		if (nb < 0 || 1.0 / nb < 0)
-		{
+		set_padding_inf(data, nb);
+		put_left_spaces(data);
+		if (nb == -1.0 / 0.0)
 			fill_buffer(data, "-", 1);
-		}
 		else if (data->plus)
 			fill_buffer(data, "+", 1);
 		else if (data->space)
 			fill_buffer(data, " ", 1);
+		put_zeros(data);
+		if (nb == -1.0 / 0.0)
+			fill_buffer(data, "inf", 3);
+		else if (nb == 1.0 / 0.0)
+			fill_buffer(data, "inf", 3);
+		else
+			fill_buffer(data, "nan", 3);
+		put_right_spaces(data);
+		return (-1);
 	}
+	return (1);
 }
 
-void	pf_putfloat(t_data *data)
+long double	pf_ipart(t_data *data, long double nb)
 {
-	int				i;
-	long			i_part;
-	long double		nb;
-	double			f_part;
+	long i_part;
 
-	if (data->size == 16)
-		nb = va_arg(data->ap, long double);
-	else
-		nb = va_arg(data->ap, double);
-	//printf("nb = %Lf\n", nb);
-	if (nb == 1.0 / 0.0 || nb == -1.0 / 0.0 || nb != nb)
-	{
-		inf(data, nb);
-		return ;
-	}
-	else
-		data->padding.size = 0;
-	if (data->prec == -1)
-		data->prec = 6;
-	if (data->prec == 0 && nb != 0)
-		nb += (nb < 0) ? -0.4999999 : 0.4999999;
-	//printf("prec = %d\n", data->prec);
 	i_part = (long)nb;
-	f_part = nb - (double)i_part;
-	//printf("f_part%f\n", f_part);
 	set_padding(data, i_part, nb);
 	put_left_spaces(data);
 	put_sign_float(data, nb);
 	put_zeros(data);
-	if ((i = pf_itoa(data, i_part)) == -1)
+	return ((long double)i_part);
+}
+
+void	pf_putfloat(t_data *data)
+{
+	long double		nb;
+	long double		f_part;
+
+	nb = cast_float(data);
+	if (inf(data, nb) == -1)
 		return ;
+	data->prec = (data->prec == -1) ? 6 : data->prec;
+	if (data->prec == 0 && nb != 0)
+		nb += (nb < 0) ? -0.4999999 : 0.4999999;
+	f_part = pf_ipart(data, nb);
+	if ((pf_itoa(data, f_part)) == -1)
+		return ;
+	f_part = nb - f_part;
 	if (data->prec != 0 || data->sharp)
 		fill_buffer(data, ".", 1);
 	if (data->prec != 0)
 	{
 		f_part = (f_part < 0) ? -f_part : f_part;
-		//printf("f_part%f\n", f_part);
 		f_part = f_part * power(10, data->prec) + 0.5;
-		//printf("f_part%f\n", f_part);
-		if ((i = pf_ftoa(data, (long)f_part, data->prec)) == -1)
+		if ((pf_ftoa(data, f_part, data->prec)) == -1)
 			return ;
-		while (i++ < data->prec)
-			fill_buffer(data, "0", 1);
 	}
 	put_right_spaces(data);
 }
