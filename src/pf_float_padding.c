@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_float_padding.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/25 13:52:43 by lnicosia          #+#    #+#             */
+/*   Updated: 2019/02/25 13:52:44 by lnicosia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "put_padding.h"
 
-void	set_fpadding_lmin(t_data *data)
+void		set_fpadding_lmin(t_data *data)
 {
 	if (!data->left)
 	{
@@ -14,7 +26,7 @@ void	set_fpadding_lmin(t_data *data)
 		data->padding.right_spaces = data->l_min - data->padding.size;
 }
 
-void	set_fpadding(t_data *data, long i_part, long double nb)
+void		set_fpadding(t_data *data, long i_part, long double nb)
 {
 	data->padding.size = (data->prec > 0) ? data->prec + 1 : data->prec;
 	if (i_part == 0)
@@ -34,10 +46,10 @@ void	set_fpadding(t_data *data, long i_part, long double nb)
 	data->padding.left_spaces = 0;
 	data->padding.right_spaces = 0;
 	if (data->l_min > data->padding.size)
-		set_padding_lmin(data);
+		set_fpadding_lmin(data);
 }
 
-void	set_fpadding_inf(t_data *data, long double nb)
+void		set_fpadding_inf(t_data *data, long double nb)
 {
 	data->padding.size = (nb == -1.0 / 0.0) ? 3 : 3;
 	if (data->plus || data->space || nb == -1.0 / 0.0)
@@ -53,11 +65,11 @@ void	set_fpadding_inf(t_data *data, long double nb)
 		data->padding.right_spaces = data->l_min - data->padding.size;
 }
 
-int	inf(t_data *data, long double nb)
+int			inf(t_data *data, long double nb)
 {
 	if (nb == 1.0 / 0.0 || nb == -1.0 / 0.0 || nb != nb)
 	{
-		set_padding_inf(data, nb);
+		set_fpadding_inf(data, nb);
 		put_left_spaces(data);
 		if (nb == -1.0 / 0.0)
 			fill_buffer(data, "-", 1);
@@ -78,7 +90,7 @@ int	inf(t_data *data, long double nb)
 	return (1);
 }
 
-long double cast_float(t_data *data)
+long double	cast_float(t_data *data)
 {
 	long double nb;
 

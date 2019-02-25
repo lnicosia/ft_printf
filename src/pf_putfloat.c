@@ -6,7 +6,7 @@
 /*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
-/*   Updated: 2019/02/22 18:38:58 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/25 13:53:48 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ static void	put_sign_float(t_data *data, long double nb)
 	}
 }
 
-
-int		pf_ftoa(t_data *data, long nb, int precision)
+int			pf_ftoa(t_data *data, long nb, int precision)
 {
 	int		i;
 	char	*str;
@@ -53,7 +52,7 @@ int		pf_ftoa(t_data *data, long nb, int precision)
 	return (i);
 }
 
-int		pf_itoa(t_data *data, long nb)
+int			pf_itoa(t_data *data, long nb)
 {
 	int		i;
 	int		size;
@@ -85,14 +84,14 @@ long double	pf_ipart(t_data *data, long double nb)
 	long i_part;
 
 	i_part = (long)nb;
-	set_padding(data, i_part, nb);
+	set_fpadding(data, i_part, nb);
 	put_left_spaces(data);
 	put_sign_float(data, nb);
 	put_zeros(data);
 	return ((long double)i_part);
 }
 
-void	pf_putfloat(t_data *data)
+void		pf_putfloat(t_data *data)
 {
 	long double		nb;
 	long double		f_part;

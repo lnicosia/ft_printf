@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/22 14:14:57 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/25 13:42:07 by lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,10 @@ void		set_fpadding(t_data *data, long i_part, long double nb);
 void		set_fpadding_inf(t_data *data, long double nb);
 int			inf(t_data *data, long double nb);
 long double cast_float(t_data *data);
+int			get_size(long nbr);
+long double	power(long double nb, int power);
+char		*pf_strnew(int size, t_data *data);
+void		rev_str(char *str, int len);
+void		pf_strdel(char **ap);
+
 #endif
