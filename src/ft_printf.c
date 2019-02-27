@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:03:58 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/22 16:22:53 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/27 16:47:22 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		fill_buffer(t_data *data, const char *s, unsigned int size)
 		data->ret = -1;
 	if (data->i + size >= BUFF_SIZE)
 	{
-		write(1, data->buffer, data->i);
+		write(data->fd, data->buffer, data->i);
 		data->i = 0;
 	}
 	if (size < BUFF_SIZE)
@@ -58,7 +58,7 @@ void		fill_buffer(t_data *data, const char *s, unsigned int size)
 		}
 	}
 	else
-		write(1, s, size);
+		write(data->fd, s, size);
 }
 
 void		reset_options(t_data *data)
@@ -76,13 +76,14 @@ void		reset_options(t_data *data)
 	data->padding.zeros = 0;
 }
 
-void		init_data(t_data *data)
+void		init_data(t_data *data, int fd)
 {
 	int	i;
 
 	i = -1;
 	data->i = 0;
 	data->ret = 0;
+	data->fd = fd;
 	while (++i < BUFF_SIZE)
 		data->buffer[i] = '\0';
 	reset_options(data);
@@ -120,7 +121,7 @@ int			ft_printf(const char *restrict format, ...)
 
 	if (!format)
 		return (-1);
-	init_data(&data);
+	init_data(&data, 1);
 	va_start(data.ap, format);
 	parse_format(format, &data);
 	write(1, data.buffer, data.i);

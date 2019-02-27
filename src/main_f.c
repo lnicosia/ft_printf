@@ -6,7 +6,7 @@
 /*   fy: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:02:44 fy lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/22 17:05:43 by gaerhard         ###   ########.fr       */
+/*   Updated: 2019/02/27 16:50:04 by gaerhard         ###   ########.fr       */
 /*   Updated: 2019/02/13 18:11:31 fy lnicosia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -78,9 +78,10 @@ int		main(void)
 	printf("|% -#10.lf|\n", nb);
 	ret = ft_printf("|% -#10.lf|\n", nb);
 	printf("ret = %d\n\n", ret);
-	ret = printf("|% -#10.19lf|\n", nb);
-	ret = ft_printf("|% -#10.19lf|\n", nb);
+	ret = printf("|% -#10.17lf|\n", nb);
+	ret = ft_printf("|% -#10.17lf|\n", nb);
 	printf("ret = %d\n\n", ret);
+	ft_dprintf(2, "this is an %s %s\n", "error", "test");
 	/*double		nb;
 	nb = -12547.58;
 	ret = ft_printf("|% f|\n", nb);

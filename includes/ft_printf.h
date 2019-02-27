@@ -6,7 +6,7 @@
 /*   By: lnicosia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:01:05 by lnicosia          #+#    #+#             */
-/*   Updated: 2019/02/26 11:04:47 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/27 16:46:14 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_data
 	va_list			ap;
 	char			buffer[BUFF_SIZE];
 	int				i;
+	int				fd;
 	int				left;
 	int				plus;
 	int				zero;
@@ -44,6 +45,9 @@ typedef struct	s_data
 }				t_data;
 
 int				ft_printf(const char *restrict format, ...);
+int				ft_dprintf(int fd, const char *restrict format, ...);
+void			init_data(t_data *data, int fd);
+void			parse_format(const char *restrict format, t_data *data);
 void			pf_putchar(t_data *data);
 void			pf_putfloat(t_data *data);
 void			pf_putnbr(t_data *data);
