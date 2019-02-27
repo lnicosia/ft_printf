@@ -6,7 +6,7 @@
 /*   By: gaerhard <gaerhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:35:58 by gaerhard          #+#    #+#             */
-/*   Updated: 2019/02/25 13:53:48 by lnicosia         ###   ########.fr       */
+/*   Updated: 2019/02/27 16:37:57 by gaerhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "put_padding.h"
 #include <stdlib.h>
 
-static void	put_sign_float(t_data *data, long double nb)
+static void			put_sign_float(t_data *data, long double nb)
 {
 	if (data->padding.sign)
 	{
@@ -29,7 +29,7 @@ static void	put_sign_float(t_data *data, long double nb)
 	}
 }
 
-int			pf_ftoa(t_data *data, long nb, int precision)
+static int			pf_ftoa(t_data *data, long nb, int precision)
 {
 	int		i;
 	char	*str;
@@ -52,7 +52,7 @@ int			pf_ftoa(t_data *data, long nb, int precision)
 	return (i);
 }
 
-int			pf_itoa(t_data *data, long nb)
+static int			pf_itoa(t_data *data, long nb)
 {
 	int		i;
 	int		size;
@@ -79,7 +79,7 @@ int			pf_itoa(t_data *data, long nb)
 	return (i + 1);
 }
 
-long double	pf_ipart(t_data *data, long double nb)
+static long double	pf_ipart(t_data *data, long double nb)
 {
 	long i_part;
 
@@ -91,7 +91,7 @@ long double	pf_ipart(t_data *data, long double nb)
 	return ((long double)i_part);
 }
 
-void		pf_putfloat(t_data *data)
+void				pf_putfloat(t_data *data)
 {
 	long double		nb;
 	long double		f_part;
